@@ -546,18 +546,19 @@ const HeroSection = React.memo(() => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: state.isMobile ? 'flex-end' : 'center',
           minHeight: '100vh',
-          textAlign: 'center'
+          textAlign: 'center',
+          paddingBottom: state.isMobile ? '80px' : '0'
         }}>
           <motion.button
             style={{
-              backgroundColor: state.isMobile ? 'rgba(201, 161, 75, 0.2)' : 'transparent',
-              border: `1.5px solid ${COLORS.white}`,
-              color: COLORS.white,
-              padding: state.isMobile ? '16px 32px' : '12px 28px',
+              backgroundColor: state.isMobile ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+              border: state.isMobile ? '1px solid rgba(255, 255, 255, 0.3)' : `1.5px solid ${COLORS.white}`,
+              color: state.isMobile ? 'rgba(255, 255, 255, 0.95)' : COLORS.white,
+              padding: state.isMobile ? '14px 28px' : '12px 28px',
               borderRadius: '50px',
-              fontSize: state.isMobile ? '1.2rem' : '1.1rem',
+              fontSize: state.isMobile ? '1.05rem' : '1.1rem',
               fontWeight: '400',
               cursor: 'pointer',
               fontFamily: FONTS.secondary,
@@ -565,21 +566,21 @@ const HeroSection = React.memo(() => {
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               letterSpacing: '0.02em',
-              minWidth: state.isMobile ? '250px' : '200px',
+              minWidth: state.isMobile ? '240px' : '200px',
               zIndex: 15,
-              backdropFilter: 'blur(10px)',
-              boxShadow: state.isMobile ? '0 6px 30px rgba(0, 0, 0, 0.5)' : '0 4px 20px rgba(0, 0, 0, 0.3)',
+              backdropFilter: 'blur(15px)',
+              boxShadow: state.isMobile ? '0 4px 20px rgba(0, 0, 0, 0.3)' : '0 4px 20px rgba(0, 0, 0, 0.3)',
               marginTop: state.isMobile ? '0' : '2rem'
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: state.isLoaded ? 1 : 0, scale: state.isLoaded ? 1 : 0.8 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             whileHover={{
-              backgroundColor: 'rgba(201, 161, 75, 0.2)',
+              backgroundColor: 'rgba(201, 161, 75, 0.15)',
               color: COLORS.primary,
               borderColor: COLORS.primary,
               scale: 1.02,
-              boxShadow: '0 6px 30px rgba(201, 161, 75, 0.4)'
+              boxShadow: '0 6px 25px rgba(201, 161, 75, 0.3)'
             }}
             whileTap={{ scale: 0.98 }}
           >
@@ -599,11 +600,11 @@ const CompanyCarouselSection = React.memo(() => {
   const { getSectionPadding, getElementSpacing } = useGridSpacing();
 
   const logos = useMemo(() => [
-    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_33_p8i6is.png",
-    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_37_aq5kep.png",
-    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_31_wegaww.png",
-    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_29_n28ci5.png",
-    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_27_xfoxaf.png"
+    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_47_eofrhp.png",
+    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_45_ntzueh.png",
+    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_44_ifam99.png",
+    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/image-removebg-preview_43_rytkux.png",
+    "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_200/Forbs_myoluf.png"
   ], []);
 
   const slickSettings = useMemo(() => ({
@@ -662,38 +663,32 @@ const CompanyCarouselSection = React.memo(() => {
 
       <div className="logo-carousel">
         <Slider {...slickSettings}>
-          {logos.map((logo, index) => {
-            // הגדלים המותאמים אישית ללוגואים הקטנים יותר
-            const isSmallLogo = logo.includes('_33_') || logo.includes('_37_');
-            const sizeMultiplier = isSmallLogo ? 1.4 : 1; // הגדלה של 40% ללוגואים הקטנים
-            
-            return (
-              <div key={index} className="logo-slide">
-                <img
-                  src={logo}
-                  alt={`Company logo ${index + 1}`}
-                  loading="lazy"
-                  style={{
-                    width: getResponsiveValue({
-                      mobile: `${90 * sizeMultiplier}px`,
-                      tablet: `${120 * sizeMultiplier}px`,
-                      laptop: `${140 * sizeMultiplier}px`,
-                      desktop: `${150 * sizeMultiplier}px`,
-                      large: `${130 * sizeMultiplier}px`
-                    }),
-                    height: getResponsiveValue({
-                      mobile: `${90 * sizeMultiplier}px`,
-                      tablet: `${120 * sizeMultiplier}px`,
-                      laptop: `${140 * sizeMultiplier}px`,
-                      desktop: `${150 * sizeMultiplier}px`,
-                      large: `${130 * sizeMultiplier}px`
-                    }),
-                    objectFit: 'contain'
-                  }}
-                />
-              </div>
-            );
-          })}
+          {logos.map((logo, index) => (
+            <div key={index} className="logo-slide">
+              <img
+                src={logo}
+                alt={`Company logo ${index + 1}`}
+                loading="lazy"
+                style={{
+                  width: getResponsiveValue({
+                    mobile: '100px',
+                    tablet: '130px',
+                    laptop: '150px',
+                    desktop: '160px',
+                    large: '140px'
+                  }),
+                  height: getResponsiveValue({
+                    mobile: '100px',
+                    tablet: '130px',
+                    laptop: '150px',
+                    desktop: '160px',
+                    large: '140px'
+                  }),
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     </section>
@@ -1403,23 +1398,60 @@ const CTASection = React.memo(() => {
         }
 
         @media (max-width: 768px) {
-          .cta-container { 
-            padding: 40px 25px; 
-            border-radius: 20px; 
+          .cta-container {
+            padding: 25px 20px;
+            border-radius: 20px;
             margin: 0 15px;
+            box-shadow:
+              0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
           }
-          
+
+          .cta-title {
+            font-size: 1.4rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+
           .form-container {
             flex-direction: column !important;
-            gap: 1rem !important;
+            gap: 0.9rem !important;
           }
-          
+
           .form-input {
             min-width: 100% !important;
+            padding: 14px 18px !important;
+            font-size: 16px !important;
+            border-radius: 14px !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+            transition: all 0.3s ease !important;
           }
-          
+
+          .form-input:focus {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border: 1.5px solid rgba(201, 161, 75, 0.5) !important;
+            box-shadow: 0 0 0 3px rgba(201, 161, 75, 0.15) !important;
+            transform: translateY(-1px) !important;
+          }
+
+          .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 16px !important;
+          }
+
           .submit-btn {
             width: 100%;
+            padding: 16px 28px !important;
+            font-size: 16px !important;
+            margin-top: 0.5rem;
+            background: linear-gradient(135deg, #C9A14B 0%, #A67C52 100%) !important;
+            box-shadow: 0 4px 16px rgba(201, 161, 75, 0.35) !important;
+            border-radius: 14px !important;
+          }
+
+          .submit-btn:hover {
+            background: linear-gradient(135deg, #D4AF5E 0%, #B88A61 100%) !important;
+            box-shadow: 0 6px 20px rgba(201, 161, 75, 0.45) !important;
           }
         }
       `}</style>
@@ -1472,16 +1504,6 @@ const CTASection = React.memo(() => {
             type="submit"
             className="submit-btn"
             aria-label="שלח טופס"
-            onMouseEnter={(e) => {
-              e.target.style.background = 'linear-gradient(135deg, #0088FF 0%, #0066E6 100%)';
-              e.target.style.transform = 'translateY(-2px) scale(1.02)';
-              e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)';
-              e.target.style.transform = 'translateY(0) scale(1)';
-              e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
-            }}
           >
             שלח
           </button>
@@ -1513,7 +1535,7 @@ const AboutUsSection = React.memo(() => {
     <section style={{
       width: '100%',
       color: COLORS.white,
-      padding: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+      padding: `${getElementSpacing('medium')} ${getElementSpacing('medium')}`,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -1521,6 +1543,33 @@ const AboutUsSection = React.memo(() => {
       position: 'relative',
       textAlign: 'center'
     }}>
+      <style>{`
+        .about-card-mobile {
+          ${Object.entries(sharedStyles.glassCard).map(([key, value]) =>
+            `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value};`
+          ).join('\n')}
+          position: relative;
+          overflow: hidden;
+        }
+
+        .about-card-mobile::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(201, 161, 75, 0.1) 0%, transparent 70%);
+          animation: rotateGlow 15s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+      `}</style>
+
       <div style={{
         maxWidth: GRID_SYSTEM.maxWidth.content,
         width: '100%',
@@ -1530,71 +1579,122 @@ const AboutUsSection = React.memo(() => {
         {content.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.3 }}
-            viewport={{ once: true, margin: "-100px" }}
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            viewport={{ once: true, margin: "-50px" }}
             style={{
-              marginBottom: index === content.length - 1 ? 0 : getElementSpacing('medium'),
-              padding: getElementSpacing('small'),
-              direction: 'rtl',
+              marginBottom: index === content.length - 1 ? 0 : getElementSpacing('large'),
               position: 'relative'
             }}
           >
-            <div style={{
-              position: 'absolute',
-              left: '-20%',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '500px',
-              height: '500px',
-              background: 'radial-gradient(ellipse 120% 100% at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 100%)',
-              filter: 'blur(50px)',
-              zIndex: -1,
-              pointerEvents: 'none',
-              opacity: 0.8
-            }} />
-
-            <h3 style={{
-              fontSize: getResponsiveValue({
-                mobile: '24px',
-                tablet: '32px',
-                laptop: '32px',
-                desktop: '36px',
-                large: '40px'
-              }),
-              fontWeight: '700',
-              marginBottom: getElementSpacing('small'),
-              fontFamily: FONTS.secondary,
-              lineHeight: 1.2,
-              textAlign: 'center',
+            <div className="about-card-mobile" style={{
+              padding: '30px 20px',
               direction: 'rtl',
-              ...sharedStyles.gradientText,
               position: 'relative',
-              zIndex: 2
+              zIndex: 1
             }}>
-              {item.title}
-            </h3>
+              {/* Decorative corner elements */}
+              <div style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                width: '40px',
+                height: '40px',
+                border: '2px solid rgba(201, 161, 75, 0.3)',
+                borderLeft: 'none',
+                borderBottom: 'none',
+                borderRadius: '0 12px 0 0'
+              }} />
+              <div style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '10px',
+                width: '40px',
+                height: '40px',
+                border: '2px solid rgba(201, 161, 75, 0.3)',
+                borderRight: 'none',
+                borderTop: 'none',
+                borderRadius: '0 0 0 12px'
+              }} />
 
-            <p style={{
-              fontSize: getResponsiveValue({
-                mobile: '18px',
-                tablet: '20px',
-                laptop: '20px',
-                desktop: '22px',
-                large: '24px'
-              }),
-              lineHeight: 1.8,
-              fontFamily: FONTS.secondary,
-              fontWeight: '400',
-              color: 'rgba(255, 255, 255, 0.9)',
-              maxWidth: '90%',
-              margin: '0 auto',
-              position: 'relative',
-              zIndex: 2
-            }}>
-              {item.description}
-            </p>
+              <h3 style={{
+                fontSize: '28px',
+                fontWeight: '700',
+                marginBottom: '16px',
+                fontFamily: FONTS.secondary,
+                lineHeight: 1.2,
+                textAlign: 'center',
+                direction: 'rtl',
+                background: 'linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                position: 'relative',
+                zIndex: 2,
+                letterSpacing: '0.5px'
+              }}>
+                {item.title}
+              </h3>
+
+              {/* Decorative divider */}
+              <div style={{
+                width: '60px',
+                height: '3px',
+                background: 'linear-gradient(90deg, transparent, #C9A14B, transparent)',
+                margin: '0 auto 20px',
+                borderRadius: '10px',
+                boxShadow: '0 0 10px rgba(201, 161, 75, 0.5)'
+              }} />
+
+              <p style={{
+                fontSize: '17px',
+                lineHeight: 1.7,
+                fontFamily: FONTS.secondary,
+                fontWeight: '400',
+                color: 'rgba(255, 255, 255, 0.95)',
+                maxWidth: '100%',
+                margin: '0 auto',
+                position: 'relative',
+                zIndex: 2,
+                textAlign: 'center'
+              }}>
+                {item.description}
+              </p>
+            </div>
+
+            {/* Floating particles */}
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                style={{
+                  position: 'absolute',
+                  width: '4px',
+                  height: '4px',
+                  background: '#C9A14B',
+                  borderRadius: '50%',
+                  boxShadow: '0 0 8px #C9A14B',
+                  left: `${20 + i * 30}%`,
+                  top: `${10 + i * 20}%`,
+                  zIndex: 0
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                  scale: [1, 1.5, 1]
+                }}
+                transition={{
+                  duration: 3 + i,
+                  repeat: Infinity,
+                  delay: i * 0.5,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
           </motion.div>
         ))}
       </div>

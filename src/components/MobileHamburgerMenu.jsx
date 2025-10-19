@@ -42,12 +42,12 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
 
   // פריטי הניווט
   const navItems = [
-    { id: 'home', label: 'בית', icon: '🏠' },
-    { id: 'services', label: 'שירותים', icon: '💼' },
-    { id: 'about', label: 'אודותינו', icon: 'ℹ️' },
-    { id: 'gallery', label: 'גלריה', icon: '🖼️' },
-    { id: 'blog', label: 'בלוג', icon: '📝' },
-    { id: 'contact', label: 'צור קשר', icon: '📞' }
+    { id: 'home', label: 'בית' },
+    { id: 'services', label: 'שירותים' },
+    { id: 'about', label: 'אודותינו' },
+    { id: 'gallery', label: 'גלריה' },
+    { id: 'blog', label: 'בלוג' },
+    { id: 'contact', label: 'צור קשר' }
   ];
 
   const handleNavClick = (itemId) => {
@@ -138,18 +138,19 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
           position: fixed;
           top: 0;
           right: ${isOpen ? '0' : '-100%'};
-          width: 280px;
+          width: 300px;
           height: 100vh;
-          background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.1) 0%, 
-            rgba(255, 255, 255, 0.05) 100%);
-          backdrop-filter: blur(30px);
-          -webkit-backdrop-filter: blur(30px);
-          border-left: 1px solid rgba(255, 255, 255, 0.2);
+          background: linear-gradient(135deg,
+            rgba(28, 28, 28, 0.95) 0%,
+            rgba(20, 20, 20, 0.98) 100%);
+          backdrop-filter: blur(40px);
+          -webkit-backdrop-filter: blur(40px);
+          border-left: 1px solid rgba(255, 255, 255, 0.15);
           transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
           z-index: 999999;
           overflow-y: auto;
           padding: 80px 0 40px 0;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
         }
 
         .menu-logo {
@@ -160,11 +161,44 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
           padding: 0 30px;
         }
 
-        .menu-logo img {
-          width: 60px;
-          height: 60px;
-          object-fit: contain;
-          filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+        .menu-close-button {
+          width: 50px;
+          height: 50px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+          position: relative;
+        }
+
+        .menu-close-button:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: rotate(90deg) scale(1.1);
+        }
+
+        .menu-close-button::before,
+        .menu-close-button::after {
+          content: '';
+          position: absolute;
+          width: 24px;
+          height: 2px;
+          background: white;
+          border-radius: 1px;
+        }
+
+        .menu-close-button::before {
+          transform: rotate(45deg);
+        }
+
+        .menu-close-button::after {
+          transform: rotate(-45deg);
         }
 
         .menu-items {
@@ -174,7 +208,7 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
         }
 
         .menu-item {
-          margin: 8px 20px;
+          margin: 10px 24px;
           opacity: ${isOpen ? '1' : '0'};
           transform: translateX(${isOpen ? '0' : '30px'});
           transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -189,49 +223,48 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
         .menu-link {
           display: flex;
           align-items: center;
-          padding: 16px 20px;
-          color: rgba(255, 255, 255, 0.9);
+          justify-content: center;
+          padding: 18px 24px;
+          color: rgba(255, 255, 255, 0.85);
           text-decoration: none;
-          border-radius: 12px;
-          font-size: 16px;
+          border-radius: 16px;
+          font-size: 17px;
           font-weight: 500;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           cursor: pointer;
           position: relative;
           overflow: hidden;
+          letter-spacing: 0.02em;
         }
 
         .menu-link:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.12);
           color: white;
-          transform: translateX(-5px);
+          transform: translateX(-3px);
         }
 
         .menu-link.active {
-          background: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(135deg, rgba(201, 161, 75, 0.2) 0%, rgba(166, 124, 82, 0.15) 100%);
           color: white;
           font-weight: 600;
+          border: 1px solid rgba(201, 161, 75, 0.3);
         }
 
         .menu-link.active::before {
           content: '';
           position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
           width: 4px;
-          background: linear-gradient(to bottom, #DAA584, #C8956D);
-          border-radius: 0 2px 2px 0;
-        }
-
-        .menu-icon {
-          font-size: 20px;
-          margin-left: 12px;
-          opacity: 0.8;
+          height: 60%;
+          background: linear-gradient(to bottom, #C9A14B, #A67C52);
+          border-radius: 2px 0 0 2px;
         }
 
         .menu-text {
           flex: 1;
+          text-align: center;
         }
 
         .close-area {
@@ -258,6 +291,15 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
             width: 100vw;
             right: ${isOpen ? '0' : '-100%'};
             border-left: none;
+          }
+
+          .menu-item {
+            margin: 8px 20px;
+          }
+
+          .menu-link {
+            padding: 16px 20px;
+            font-size: 16px;
           }
 
           .close-area {
@@ -298,22 +340,20 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
           
           <div className="menu-panel">
             <div className="menu-logo">
-              <img
-                src="https://res.cloudinary.com/doteohz34/image/upload/q_auto:best,f_auto,w_200/image-removebg-preview_33_vmqddo.png"
-                alt="OMC Logo"
-                onClick={() => handleNavClick('home')}
-                style={{ cursor: 'pointer' }}
+              <div
+                className="menu-close-button"
+                onClick={() => setIsOpen(false)}
+                aria-label="סגור תפריט"
               />
             </div>
 
             <ul className="menu-items">
               {navItems.map((item) => (
                 <li key={item.id} className="menu-item">
-                  <div 
+                  <div
                     className={`menu-link ${currentPage === item.id ? 'active' : ''}`}
                     onClick={() => handleNavClick(item.id)}
                   >
-                    <span className="menu-icon">{item.icon}</span>
                     <span className="menu-text">{item.label}</span>
                   </div>
                 </li>

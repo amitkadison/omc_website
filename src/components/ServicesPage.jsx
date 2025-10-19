@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from './ContactForm';
 
@@ -515,38 +515,38 @@ const ServicesPage = () => {
             gap: 30px;
             margin-bottom: 60px;
           }
-          
+
           .service-row::after {
             display: none;
           }
-          
+
           .service-image {
             height: 350px;
             max-width: 100%;
             margin: 0 auto;
           }
-          
+
           .images-section {
             gap: 20px;
             justify-content: center;
           }
-          
+
           .image-container:first-child {
             width: 45%;
             height: 320px;
           }
-          
+
           .image-container:last-child {
             width: 45%;
             height: 380px;
           }
-          
+
           .service-content {
             padding: 30px 0;
             text-align: center;
             max-width: 100%;
           }
-          
+
           .service-title {
             font-size: 1.5rem;
           }
@@ -556,22 +556,67 @@ const ServicesPage = () => {
             transform: translateX(-50%);
             width: 50%;
           }
-          
+
           .service-description {
             font-size: 15px;
             padding: 0 10px;
           }
-          
+
+          .cta-container {
+            padding: 25px 20px !important;
+            border-radius: 20px !important;
+            margin: 0 15px !important;
+            box-shadow:
+              0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
+          }
+
+          .cta-title {
+            font-size: 1.4rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+
           .form-container {
-            flex-direction: column;
+            flex-direction: column !important;
+            gap: 0.9rem !important;
           }
-          
+
           .form-input {
-            width: 100%;
+            width: 100% !important;
+            min-width: 100% !important;
+            padding: 14px 18px !important;
+            font-size: 16px !important;
+            border-radius: 14px !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+            transition: all 0.3s ease !important;
           }
-          
+
+          .form-input:focus {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border: 1.5px solid rgba(201, 161, 75, 0.5) !important;
+            box-shadow: 0 0 0 3px rgba(201, 161, 75, 0.15) !important;
+            transform: translateY(-1px) !important;
+          }
+
+          .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 16px !important;
+          }
+
           .submit-btn {
-            width: 100%;
+            width: 100% !important;
+            padding: 16px 28px !important;
+            font-size: 16px !important;
+            margin-top: 0.5rem;
+            background: linear-gradient(135deg, #C9A14B 0%, #A67C52 100%) !important;
+            box-shadow: 0 4px 16px rgba(201, 161, 75, 0.35) !important;
+            border-radius: 14px !important;
+          }
+
+          .submit-btn:hover {
+            background: linear-gradient(135deg, #D4AF5E 0%, #B88A61 100%) !important;
+            box-shadow: 0 6px 20px rgba(201, 161, 75, 0.45) !important;
           }
         }
 
@@ -718,16 +763,6 @@ const ServicesPage = () => {
                 type="submit"
                 className="submit-btn"
                 aria-label="שלח טופס"
-                onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #0088FF 0%, #0066E6 100%)';
-                  e.target.style.transform = 'translateY(-2px) scale(1.02)';
-                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)';
-                  e.target.style.transform = 'translateY(0) scale(1)';
-                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3)';
-                }}
               >
                 שלח
               </button>

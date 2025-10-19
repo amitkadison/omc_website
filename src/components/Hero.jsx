@@ -420,6 +420,7 @@ const Hero = () => {
         {/* וידאו רקע */}
         {showVideo && (
           <motion.video
+            key={isMobile ? 'mobile-video' : 'desktop-video'}
             ref={videoRef}
             className="hero-video"
             initial={{ opacity: 0 }}
@@ -430,6 +431,7 @@ const Hero = () => {
             playsInline
             autoPlay
             preload="auto"
+            webkit-playsinline="true"
             onLoadedData={() => {
               if (videoRef.current) {
                 videoRef.current.play().catch(e => console.log('onLoadedData play failed:', e));
@@ -450,7 +452,7 @@ const Hero = () => {
               zIndex: 1
             }}
           >
-            <source src={isMobile ? "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/video_capela_pxvzeo.mp4" : "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/Ha-Cerem_-_Italy_Embassy_2023_GlebSmirnovPro-VEED_sfp5fa.mp4"} type="video/mp4" />
+            <source src={isMobile ? "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto,vc_auto/video_capela_hmgf1k.mp4" : "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/Ha-Cerem_-_Italy_Embassy_2023_GlebSmirnovPro-VEED_sfp5fa.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
           </motion.video>
         )}

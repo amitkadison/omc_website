@@ -985,10 +985,12 @@ const OurServicesSection = React.memo(() => {
         }
         
         .services-swiper .swiper-pagination {
-          bottom: -40px !important;
+          bottom: -50px !important;
           display: flex;
           justify-content: center;
           gap: 8px;
+          position: absolute !important;
+          z-index: 20 !important;
         }
         
         .services-swiper .swiper-pagination-bullet {
@@ -1037,9 +1039,9 @@ const OurServicesSection = React.memo(() => {
             }}
             className="services-swiper"
             style={{
-              height: '380px',
+              height: '360px',
               overflow: 'visible',
-              paddingBottom: '80px'
+              paddingBottom: '60px'
             }}
           >
           {servicesData.map((item, index) => (
@@ -1054,7 +1056,7 @@ const OurServicesSection = React.memo(() => {
               }}>
                 <div style={{
                   width: '100%',
-                  height: '200px',
+                  height: '300px',
                   position: 'relative',
                   overflow: 'hidden'
                 }}>
@@ -1073,41 +1075,32 @@ const OurServicesSection = React.memo(() => {
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    height: '80px',
-                    background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%)',
+                    height: '100px',
+                    background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%)',
                     zIndex: 1
                   }} />
                 </div>
                 <div style={{
-                  padding: '20px 15px',
-                  height: '160px',
+                  padding: '15px',
+                  height: '60px',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'flex-start',
+                  justifyContent: 'center',
                   textAlign: 'center',
                   direction: 'rtl',
-                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)'
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)'
                 }}>
                   <h3 style={{
-                    fontSize: '1.3rem',
+                    fontSize: '1.4rem',
                     fontWeight: '700',
                     color: '#FFFFFF',
                     fontFamily: FONTS.secondary,
-                    marginBottom: '8px',
+                    margin: 0,
                     textShadow: '0 2px 8px rgba(0,0,0,0.5)',
                     letterSpacing: '0.02em'
                   }}>
                     {item.text}
                   </h3>
-                  <p style={{
-                    fontSize: '0.85rem',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    fontFamily: FONTS.secondary,
-                    lineHeight: 1.4,
-                    fontWeight: '400'
-                  }}>
-                    {item.description}
-                  </p>
                 </div>
               </div>
             </SwiperSlide>
@@ -1120,7 +1113,8 @@ const OurServicesSection = React.memo(() => {
   return (
     <section style={{
       width: '100%',
-      padding: `0 ${getElementSpacing('medium')}`, // Removed top/bottom padding
+      padding: `0 ${getElementSpacing('medium')}`,
+      paddingBottom: (isMobile || isTablet) ? '70px' : '0', // Space for pagination dots below cards
       position: 'relative',
       overflow: 'visible'
     }}>
@@ -1222,7 +1216,6 @@ const OurServicesSection = React.memo(() => {
 // CTA SECTION
 // ========================================================================================
 const CTASection = React.memo(() => {
-  const { getResponsiveValue, isMobile } = useResponsive();
   const { getSectionPadding, getElementSpacing } = useGridSpacing();
 
   return (

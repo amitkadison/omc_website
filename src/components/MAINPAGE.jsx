@@ -339,6 +339,7 @@ const HeroSection = React.memo(() => {
         
         {/* Video Background */}
         <motion.video
+          key={state.isMobile ? 'mobile-video' : 'desktop-video'}
           ref={videoRef}
           className="hero-video"
           initial={{ opacity: 1 }}
@@ -348,8 +349,9 @@ const HeroSection = React.memo(() => {
           playsInline
           autoPlay
           preload="auto"
+          webkit-playsinline="true"
         >
-          <source src="https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/Ha-Cerem_-_Italy_Embassy_2023_GlebSmirnovPro-VEED_sfp5fa.mp4" type="video/mp4" />
+          <source src={state.isMobile ? "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto,vc_auto/video_capela_hmgf1k.mp4" : "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/Ha-Cerem_-_Italy_Embassy_2023_GlebSmirnovPro-VEED_sfp5fa.mp4"} type="video/mp4" />
         </motion.video>
 
         {/* Overlay */}

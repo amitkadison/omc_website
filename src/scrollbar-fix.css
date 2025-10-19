@@ -1,0 +1,131 @@
+/* GLOBAL SCROLL FIX - TOP PRIORITY */
+html {
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  
+  body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  
+  #root {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+  
+  .App {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+  
+  /* SCROLLBAR STYLING - הוסר */
+  
+  /* ENSURE SCROLLBAR VISIBILITY */
+  * {
+    scrollbar-width: auto !important;
+    -ms-overflow-style: auto !important;
+  }
+  
+  /* MOBILE SPECIFIC FIXES */
+  @media (max-width: 768px) {
+    html, body {
+      -webkit-overflow-scrolling: auto !important; /* Changed from touch */
+      touch-action: pan-y !important;
+      overscroll-behavior-y: auto !important;
+      min-height: -webkit-fill-available !important;
+    }
+    
+    /* SPECIFIC TRANSFORM REMOVALS - NOT GLOBAL */
+    .service-image, 
+    .images-section,
+    .problematic-element {
+      transform: none !important;
+      will-change: auto !important;
+    }
+    
+    /* DO NOT USE GLOBAL TRANSFORM REMOVAL */
+    /* This was the problem - removed:
+    * {
+      transform: none !important;
+      will-change: auto !important;
+    }
+    */
+    
+    /* Mobile scrollbar - thinner */
+    body::-webkit-scrollbar {
+      width: 6px !important;
+    }
+    
+    body::-webkit-scrollbar-thumb {
+      background: rgba(128, 128, 128, 0.6) !important;
+      border-radius: 3px !important;
+      border: none !important;
+    }
+    
+    /* Ensure proper height calculation */
+    .services-page,
+    .about-page,
+    .gallery-page {
+      height: auto !important;
+      min-height: 100vh !important;
+      min-height: -webkit-fill-available !important;
+      overflow: visible !important;
+    }
+    
+    /* Fix for iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        min-height: -webkit-fill-available !important;
+      }
+      
+      .services-page {
+        min-height: -webkit-fill-available !important;
+      }
+    }
+  }
+  
+  /* DESKTOP SPECIFIC */
+  @media (min-width: 769px) {
+    /* Keep hardware acceleration on desktop */
+    .services-page {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+  }
+  
+  /* HIGH PRIORITY OVERRIDES */
+  .services-page-wrapper,
+  .about-page-wrapper,
+  .gallery-page-wrapper {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+  
+  /* PREVENT ANY COMPONENT FROM BREAKING SCROLL */
+  .modal,
+  .overlay,
+  .popup {
+    position: fixed !important;
+    overflow-y: auto !important;
+  }
+  
+  /* ENSURE CONTENT IS NEVER CUT OFF */
+  * {
+    max-height: none !important; /* Only if elements are cut off */
+  }
+  
+  /* FIX FOR SPECIFIC PROBLEMATIC ELEMENTS */
+  .services-page::before,
+  .about-page::before,
+  .gallery-page::before {
+    height: 100vh !important; /* Limit to viewport */
+    max-height: 100vh !important;
+  }
+  

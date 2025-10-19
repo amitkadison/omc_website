@@ -1,0 +1,366 @@
+/* src/components/Hero.css */
+
+/* Reset וגדרות בסיס */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* הגדרות scrollbar */
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: block;
+    overflow-y: auto;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    text-shadow: none;
+  }
+  
+  /* עיצוב scrollbar - הוסר */
+  
+  /* גופן עברי יפה */
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap');
+  
+  /* קונטיינר ראשי */
+  .hero-container {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    overflow: visible;
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* רקע עם תמונה */
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    /* תחליף בתמונה אמיתית של הבר */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="%23333"><rect width="1200" height="800" fill="%23222"/><circle cx="600" cy="300" r="100" fill="%23444" opacity="0.3"/><rect x="400" y="500" width="400" height="200" rx="20" fill="%23555" opacity="0.2"/><text x="600" y="750" text-anchor="middle" fill="%23777" font-size="32" font-family="Arial">תמונת בר מקצועית כאן</text></svg>');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+  
+  /* שכבת חיפוי כהה */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+  
+  /* וילונות */
+  .curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(45deg, #1a1a1a, #000);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .curtain-left {
+    left: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  }
+  
+  .curtain-right {
+    right: 0;
+    background: linear-gradient(225deg, #1a1a1a 0%, #000 100%);
+  }
+  
+  /* לוגו על הוילונות (אופציונלי) */
+  .curtain::before {
+    content: 'BAR SHOW';
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    opacity: 0.3;
+  }
+  
+  /* תוכן ראשי */
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    padding: 0 20px;
+  }
+  
+  /* כותרת ראשית */
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .title-word {
+    display: inline-block;
+    margin-right: 0.3em;
+  }
+  
+  /* הדגשה למילה "הצגה" */
+  .title-word:last-child {
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  
+  /* קו תחתון אנימטיבי */
+  .title-word:last-child::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    transform: scaleX(0);
+    animation: underlineGrow 1s ease-out 4s forwards;
+  }
+  
+  @keyframes underlineGrow {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  
+  /* כותרת משנה */
+  .hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    color: #e0e0e0;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  
+  /* כפתורי פעולה */
+  .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+  
+  /* כפתור ראשי */
+  .cta-primary {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    font-family: 'Heebo', sans-serif;
+  }
+  
+  .cta-primary:hover {
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* כפתור משני */
+  .cta-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-family: 'Heebo', sans-serif;
+  }
+  
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  /* אייקון בכפתור */
+  .cta-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* אינדיקטור גלילה */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .scroll-indicator:hover {
+    color: #ff6b6b;
+    transform: translateX(-50%) scale(1.1);
+  }
+  
+  .scroll-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+  
+  .scroll-arrow {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Responsive למובייל */
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 0 15px;
+    }
+  
+    .hero-title {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+  
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 4vw, 1.2rem);
+      margin-bottom: 2rem;
+    }
+  
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    .cta-primary,
+    .cta-secondary {
+      width: 100%;
+      max-width: 280px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+    }
+  
+    .scroll-indicator {
+      bottom: 1rem;
+    }
+  
+    /* וילונות מהירות יותר במובייל */
+    .curtain-left,
+    .curtain-right {
+      transition: transform 1.2s ease-in-out;
+    }
+  }
+  
+  /* Tablet */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5rem);
+    }
+    
+    .hero-cta {
+      gap: 1.2rem;
+    }
+  }
+  
+  /* אנימציות נוספות */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* אפקטי hover מתקדמים */
+  .hero-bg {
+    transition: transform 0.5s ease-out;
+  }
+  
+  /* אופטימיזציה לביצועים */
+  .hero-container,
+  .curtain,
+  .hero-bg {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }

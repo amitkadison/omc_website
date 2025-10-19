@@ -1,0 +1,413 @@
+/* =============================================================================
+   LUXURY GRADIENT SYSTEM - Advanced Layered Gradients with 3D Effects
+   ============================================================================= */
+
+/* CSS Custom Properties for Gradient System */
+:root {
+  /* Base Colors */
+  --luxury-black: #000000;
+  --luxury-charcoal: #1a1a1a;
+  --luxury-dark-purple: #2d1b69;
+  --luxury-purple: #4c1d95;
+  --luxury-light-blue: #60a5fa;
+  --luxury-silver: #c0c0c0;
+  --luxury-gold: #fbbf24;
+  
+  /* Metallic Colors */
+  --copper-base: #b87333;
+  --copper-light: #cd7f32;
+  --copper-dark: #8b4513;
+  --silver-base: #c0c0c0;
+  --silver-light: #e6e6e6;
+  --silver-dark: #a0a0a0;
+  
+  /* Transparency Levels */
+  --overlay-light: rgba(255, 255, 255, 0.05);
+  --overlay-medium: rgba(255, 255, 255, 0.1);
+  --overlay-heavy: rgba(255, 255, 255, 0.15);
+  
+  /* Glow Effects */
+  --glow-blue: rgba(96, 165, 250, 0.15);
+  --glow-purple: rgba(124, 58, 237, 0.15);
+  --glow-silver: rgba(192, 192, 192, 0.15);
+  --glow-copper: rgba(184, 115, 51, 0.15);
+}
+
+/* =============================================================================
+   GEOMETRIC LINES AND PATTERNS
+   ============================================================================= */
+
+/* Geometric Lines Base */
+.geometric-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, var(--silver-light), transparent);
+  opacity: 0.6;
+  z-index: 3;
+}
+
+.geometric-line-vertical {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--copper-light), var(--silver-light), transparent);
+}
+
+.geometric-line-horizontal {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--copper-light), var(--silver-light), transparent);
+}
+
+.geometric-line-diagonal {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, var(--copper-light), var(--silver-light), transparent);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+/* Animated Geometric Lines */
+@keyframes geometric-glow {
+  0%, 100% {
+    opacity: 0.3;
+    box-shadow: 0 0 10px rgba(184, 115, 51, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.6);
+  }
+}
+
+.geometric-line-animated {
+  animation: geometric-glow 4s ease-in-out infinite;
+}
+
+/* Corner Geometric Elements */
+.geometric-corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  z-index: 4;
+}
+
+.geometric-corner-top-left {
+  top: 20px;
+  left: 20px;
+  border-top: 3px solid var(--copper-light);
+  border-left: 3px solid var(--silver-light);
+  border-radius: 0;
+}
+
+.geometric-corner-top-right {
+  top: 20px;
+  right: 20px;
+  border-top: 3px solid var(--silver-light);
+  border-right: 3px solid var(--copper-light);
+  border-radius: 0;
+}
+
+.geometric-corner-bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-bottom: 3px solid var(--silver-light);
+  border-left: 3px solid var(--copper-light);
+  border-radius: 0;
+}
+
+.geometric-corner-bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-bottom: 3px solid var(--copper-light);
+  border-right: 3px solid var(--silver-light);
+  border-radius: 0;
+}
+
+/* =============================================================================
+   METALLIC FRAME SYSTEM
+   ============================================================================= */
+
+/* Main Metallic Frame Container */
+.metallic-frame-container {
+  position: relative;
+  padding: 40px;
+  margin: 20px 0;
+}
+
+/* Metallic Frame without Top */
+.metallic-frame-no-top {
+  position: relative;
+  border-left: 4px solid var(--copper-base);
+  border-right: 4px solid var(--silver-base);
+  border-bottom: 4px solid var(--copper-light);
+  background: linear-gradient(135deg, 
+    rgba(184, 115, 51, 0.05) 0%, 
+    rgba(192, 192, 192, 0.05) 50%, 
+    rgba(184, 115, 51, 0.03) 100%
+  );
+  box-shadow: 
+    inset 0 0 20px rgba(184, 115, 51, 0.1),
+    inset 0 0 40px rgba(192, 192, 192, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 15px 15px;
+}
+
+/* Metallic Frame Border Effects */
+.metallic-frame-no-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(
+    135deg,
+    var(--copper-base) 0%,
+    var(--silver-light) 25%,
+    var(--copper-light) 50%,
+    var(--silver-base) 75%,
+    var(--copper-dark) 100%
+  );
+  z-index: -1;
+  border-radius: 0 0 15px 15px;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Inner Metallic Glow */
+.metallic-frame-no-top::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(192, 192, 192, 0.1) 0%,
+    rgba(184, 115, 51, 0.1) 30%,
+    transparent 70%
+  );
+  border-radius: 0 0 10px 10px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Metallic Corner Accents */
+.metallic-accent {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 5;
+}
+
+.metallic-accent-bottom-left {
+  bottom: -10px;
+  left: -10px;
+  background: radial-gradient(
+    circle at top right,
+    var(--copper-light) 0%,
+    var(--silver-base) 50%,
+    transparent 70%
+  );
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+.metallic-accent-bottom-right {
+  bottom: -10px;
+  right: -10px;
+  background: radial-gradient(
+    circle at top left,
+    var(--silver-light) 0%,
+    var(--copper-base) 50%,
+    transparent 70%
+  );
+  clip-path: polygon(100% 100%, 100% 0, 0 100%);
+}
+
+/* =============================================================================
+   ABOUT SECTION SPECIFIC STYLING
+   ============================================================================= */
+
+.about-section-enhanced {
+  position: relative;
+  margin: 60px 0;
+  padding: 0;
+  overflow: visible;
+}
+
+/* Geometric Pattern Background */
+.geometric-pattern-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, transparent 25%, rgba(184, 115, 51, 0.02) 25%, rgba(184, 115, 51, 0.02) 50%, transparent 50%),
+    linear-gradient(-45deg, transparent 25%, rgba(192, 192, 192, 0.02) 25%, rgba(192, 192, 192, 0.02) 50%, transparent 50%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* Side Geometric Elements */
+.side-geometric-left {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 200px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--copper-light) 20%,
+    var(--silver-base) 50%,
+    var(--copper-base) 80%,
+    transparent 100%
+  );
+  z-index: 4;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(184, 115, 51, 0.3);
+}
+
+.side-geometric-right {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 200px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--silver-light) 20%,
+    var(--copper-base) 50%,
+    var(--silver-dark) 80%,
+    transparent 100%
+  );
+  z-index: 4;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+}
+
+/* =============================================================================
+   ENHANCED ANIMATIONS
+   ============================================================================= */
+
+@keyframes metallic-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.metallic-shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.metallic-shimmer-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(192, 192, 192, 0.3),
+    rgba(184, 115, 51, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: metallic-shimmer 4s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Floating Geometric Elements */
+@keyframes geometric-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(4px) rotate(-1deg);
+  }
+}
+
+.floating-geometric {
+  animation: geometric-float 8s ease-in-out infinite;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .metallic-frame-container {
+    padding: 20px;
+    margin: 15px 0;
+  }
+  
+  .geometric-corner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .geometric-corner-top-left,
+  .geometric-corner-top-right,
+  .geometric-corner-bottom-left,
+  .geometric-corner-bottom-right {
+    border-width: 2px;
+  }
+  
+  .side-geometric-left,
+  .side-geometric-right {
+    width: 25px;
+    height: 150px;
+  }
+  
+  .metallic-accent {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.luxury-backdrop-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.luxury-glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.luxury-text-glow {
+  text-shadow: 
+    0 0 20px rgba(96, 165, 250, 0.3),
+    0 0 40px rgba(96, 165, 250, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.luxury-shadow-3d {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 1px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}

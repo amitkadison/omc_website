@@ -1,0 +1,83 @@
+/* CircularGallery.css - Fixed height version with proper space for titles */
+
+.circular-gallery {
+    width: 100%;
+    height: 480px !important; /* הגדלנו ל-480px לתת מקום מלא לטקסט */
+    overflow: visible !important;
+    cursor: grab;
+    position: relative;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    touch-action: pan-x pan-y;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px; /* הוספנו padding קטן בתחתית */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    
+    /* Performance optimizations */
+    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.circular-gallery canvas {
+    pointer-events: auto;
+    touch-action: pan-x pan-y;
+    position: relative;
+    z-index: 10;
+    overflow: visible !important;
+    
+    /* Canvas performance optimizations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    image-rendering: auto;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .circular-gallery {
+        height: 480px !important;
+        padding-bottom: 30px;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    
+    .circular-gallery canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Desktop optimizations */
+@media (min-width: 769px) {
+    .circular-gallery {
+        height: 480px !important;
+        padding-bottom: 30px;
+    }
+}
+
+.circular-gallery:active {
+    cursor: grabbing;
+}
+
+/* Ensure titles are visible and not cut off */
+.circular-gallery *,
+.circular-gallery canvas *,
+.circular-gallery div,
+.circular-gallery div * {
+    overflow: visible !important;
+}
+
+/* Make sure text elements have enough z-index */
+.circular-gallery .title-mesh,
+.circular-gallery .text-element {
+    z-index: 100 !important;
+}

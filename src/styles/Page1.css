@@ -1,0 +1,566 @@
+/* Pinterest Gallery CSS */
+
+/* הסרת הגדרות scrollbar גלובליות - נשאיר רק overflow-x: hidden */
+
+.pinterest-gallery {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+}
+
+.gallery-item img {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.gallery-item img[style*="opacity: 1"] {
+  opacity: 1;
+}
+
+/* רספונסיביות לגלריה */
+@media (max-width: 480px) {
+  .pinterest-gallery {
+    column-count: 2 !important;
+    column-gap: 8px !important;
+  }
+  
+  .gallery-item {
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .pinterest-gallery {
+    column-count: 3 !important;
+    column-gap: 10px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pinterest-gallery {
+    column-count: 4 !important;
+    column-gap: 12px !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .pinterest-gallery {
+    column-count: 5 !important;
+    column-gap: 14px !important;
+  }
+}
+
+@media (min-width: 1441px) {
+  .pinterest-gallery {
+    column-count: 6 !important;
+    column-gap: 16px !important;
+  }
+}
+
+/* אנימציות מקצועיות */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* סגנונות קרוסלה */
+.logo-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-carousel .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.logo-carousel .slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.logo-carousel .slick-slide > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  padding: 0 10px;
+}
+
+.logo-slide:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.logo-slide img {
+  filter: grayscale(100%) contrast(1.2) brightness(1.2) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.2));
+  transition: filter 0.3s ease;
+}
+
+.logo-slide:hover img {
+  filter: grayscale(100%) contrast(1.3) brightness(1.3) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
+}
+
+.logo-carousel .slick-dots,
+.logo-carousel .slick-arrow {
+  display: none !important;
+}
+
+/* ShinyText אפקט */
+.shiny-text {
+  background: linear-gradient(110deg, 
+    transparent 25%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    transparent 75%);
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 3s infinite linear;
+}
+
+/* CircularGallery Styles */
+.circular-gallery {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
+
+/* Glass Card Contact Section */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glass-card.contact-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0px 48px 35px -48px rgba(255, 255, 255, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 20px 10px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glass-card.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+
+.glass-card.contact-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+/* Geometric Lines for Contact Card */
+.contact-geometric-line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.8), transparent);
+  z-index: 7;
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+  animation: geometricLineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes geometricLineGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.6);
+  }
+}
+
+/* Nebula Input Fields - RTL Support */
+.nebula-input {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.nebula-input .input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.4s ease-out;
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  direction: rtl;
+  text-align: right;
+  height: 50px;
+}
+
+.nebula-input .user-label {
+  position: absolute;
+  right: 15px;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.4s ease-out;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0 8px;
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  direction: rtl;
+  font-size: 14px;
+}
+
+.nebula-input .input:focus {
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 5px 8px rgba(255, 255, 255, 0.2),
+    0 10px 20px rgba(255, 255, 255, 0.15),
+    0 15px 40px rgba(255, 255, 255, 0.1),
+    0 20px 60px rgba(255, 255, 255, 0.05);
+}
+
+.nebula-input .input:focus ~ .user-label,
+.nebula-input .input:valid ~ .user-label {
+  transform: translateY(-50%) scale(0.9);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  right: 10px;
+  left: auto;
+  top: 0;
+}
+
+.nebula-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  top: 50%;
+  right: 10px;
+  left: auto;
+  filter: blur(0.8px);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+}
+
+.nebula-input .input:focus ~ .nebula-particle {
+  animation: nebula-float 2s forwards ease-out;
+}
+
+@keyframes nebula-float {
+  0% {
+    transform: translate(0, -50%) scale(0.8);
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.8);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(calc(var(--x) * -140px), calc(var(--y) * 35px))
+      scale(1.1);
+    opacity: 0;
+    background: rgba(192, 192, 192, 0.6);
+  }
+}
+
+/* כפתור מתקדם חדש */
+.button {
+  --black-700: hsla(0 0% 12% / 1);
+  --border_radius: 9999px;
+  --transtion: 0.3s ease-in-out;
+  --offset: 2px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform-origin: center;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border_radius);
+  transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+  transition: transform var(--transtion);
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-700);
+  border-radius: var(--border_radius);
+  box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+    0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+    0 0 0 calc(var(--active, 0) * 0.375rem) hsl(0 0% 100% / 0.75);
+  transition: all var(--transtion);
+  z-index: 0;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0 0% 100% / 0.75);
+  background-image: radial-gradient(
+      at 51% 89%,
+      hsla(0, 0%, 90%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 100%, hsla(0, 0%, 80%, 1) 0px, transparent 50%),
+    radial-gradient(at 22% 91%, hsla(0, 0%, 80%, 1) 0px, transparent 50%);
+  background-position: top;
+  opacity: var(--active, 0);
+  border-radius: var(--border_radius);
+  transition: opacity var(--transtion);
+  z-index: 2;
+}
+
+.button:is(:hover, :focus-visible) {
+  --active: 1;
+}
+
+.button:active {
+  transform: scale(1);
+}
+
+.button .dots_border {
+  --size_border: calc(100% + 2px);
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size_border);
+  height: var(--size_border);
+  background-color: transparent;
+  border-radius: var(--border_radius);
+  z-index: -10;
+}
+
+.button .dots_border::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+  transform: rotate(0deg);
+  width: 100%;
+  height: 2rem;
+  background-color: white;
+  mask: linear-gradient(transparent 0%, white 120%);
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button .sparkle {
+  position: relative;
+  z-index: 10;
+  width: 1.75rem;
+}
+
+.button .sparkle .path {
+  fill: currentColor;
+  stroke: currentColor;
+  transform-origin: center;
+  color: hsl(0, 0%, 100%);
+}
+
+.button:is(:hover, :focus) .sparkle .path {
+  animation: path 1.5s linear 0.5s infinite;
+}
+
+.button .sparkle .path:nth-child(1) {
+  --scale_path_1: 1.2;
+}
+
+.button .sparkle .path:nth-child(2) {
+  --scale_path_2: 1.2;
+}
+
+.button .sparkle .path:nth-child(3) {
+  --scale_path_3: 1.2;
+}
+
+@keyframes path {
+  0%,
+  34%,
+  71%,
+  100% {
+    transform: scale(1);
+  }
+  17% {
+    transform: scale(var(--scale_path_1, 1));
+  }
+  49% {
+    transform: scale(var(--scale_path_2, 1));
+  }
+  83% {
+    transform: scale(var(--scale_path_3, 1));
+  }
+}
+
+.button .text_button {
+  position: relative;
+  z-index: 10;
+  background-image: linear-gradient(
+    90deg,
+    hsla(0 0% 100% / 1) 0%,
+    hsla(0 0% 100% / 1) 120%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: 1rem;
+  color: white;
+  font-family: 'Heebo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  direction: rtl;
+}
+
+/* רספונסיביות לטופס */
+@media (max-width: 768px) {
+  .glass-card.contact-card {
+    border-radius: 16px;
+    margin: 0 10px;
+  }
+  
+  .nebula-input .input {
+    padding: 10px 12px;
+    font-size: 14px;
+    height: 45px;
+    border-radius: 20px;
+  }
+  
+  .nebula-input .user-label {
+    right: 12px;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+  }
+
+  .button {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .button .text_button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card.contact-card {
+    border-radius: 12px;
+    margin: 0 5px;
+  }
+  
+  .nebula-input .input {
+    padding: 8px 10px;
+    font-size: 13px;
+    height: 40px;
+    border-radius: 18px;
+  }
+  
+  .nebula-input .user-label {
+    right: 10px;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+  }
+
+  .button {
+    padding: 0.7rem 1.2rem;
+  }
+
+  .button .text_button {
+    font-size: 0.8rem;
+  }
+
+  .button .sparkle {
+    width: 1.5rem;
+  }
+}

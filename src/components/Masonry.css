@@ -1,0 +1,59 @@
+/* Debug Masonry CSS - גרסה פשוטה לדיבאג */
+
+/* הסרת הגדרות scrollbar גלובליות - נשאיר רק overflow-x: hidden */
+
+.list {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  display: block;
+  min-height: 400px;
+  /* ✅ ללא overflow hidden */
+  overflow: visible;
+}
+
+.item-wrapper {
+  position: absolute;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* ✅ ללא transition בינתיים */
+}
+
+.item-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  
+  /* ✅ סגנון בסיסי בלבד */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.item-wrapper:hover .item-img {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ✅ ללא כל הקסמים של backdrop-filter בינתיים */
+/* רק אחרי שנוודא שהבסיס עובד */
+
+/* רספונסיביות בסיסית */
+@media (max-width: 768px) {
+  .item-img {
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item-img {
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,52 @@
+/* UnicornScene.css - הסתרת כפתור UnicornStudio */
+
+/* הגדרות scrollbar */
+html, body {
+  overflow-x: hidden;
+}
+
+/* עיצוב scrollbar - הוסר */
+
+/* הסתרת כפתור "MADE WITH UNICORN STUDIO" */
+.unicorn-embed [data-us-branding],
+.unicorn-embed [data-us-branding="true"],
+.unicorn-embed .us-branding,
+.unicorn-embed .us-branding-button,
+.unicorn-embed a[href*="unicorn.studio"],
+.unicorn-embed a[href*="unicornstudio"],
+.unicorn-embed div[style*="unicorn"],
+.unicorn-embed button[style*="unicorn"],
+.unicorn-embed .us-credit,
+.unicorn-embed .us-credit-link,
+.unicorn-embed .us-branding-container,
+.unicorn-embed .us-branding-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* הסתרת כל אלמנט עם טקסט "unicorn" */
+.unicorn-embed *:contains("unicorn"),
+.unicorn-embed *:contains("Unicorn"),
+.unicorn-embed *:contains("UNICORN"),
+.unicorn-embed *:contains("unicorn.studio"),
+.unicorn-embed *:contains("Unicorn Studio") {
+  display: none !important;
+}
+
+/* הסתרת כל כפתור או לינק שקשור ל-UnicornStudio */
+.unicorn-embed a,
+.unicorn-embed button,
+.unicorn-embed div {
+  position: relative;
+}
+
+.unicorn-embed a[href*="unicorn"],
+.unicorn-embed button[onclick*="unicorn"],
+.unicorn-embed div[onclick*="unicorn"] {
+  display: none !important;
+} 

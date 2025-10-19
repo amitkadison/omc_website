@@ -1,0 +1,139 @@
+.accessibility-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  margin-right: 10px;
+}
+
+.accessibility-button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #0d6efd;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accessibility-button:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.4);
+}
+
+.accessibility-panel {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 220px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid #e0e0e0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.panel-title {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.accessibility-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.accessibility-options li {
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: rtl;
+  text-align: right;
+}
+
+.accessibility-options li:hover {
+  background-color: #f8f9fa;
+  transform: translateX(-2px);
+}
+
+.accessibility-options li:active {
+  background-color: #e9ecef;
+  transform: translateX(0);
+}
+
+/* Body classes for accessibility features */
+body.high-contrast {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+body.high-contrast * {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode * {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.underline-links a {
+  text-decoration: underline !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .accessibility-widget {
+    bottom: 15px;
+    right: 15px;
+    margin-right: 8px;
+  }
+  
+  .accessibility-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .accessibility-panel {
+    width: 200px;
+    bottom: 60px;
+  }
+}

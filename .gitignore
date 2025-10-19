@@ -1,0 +1,55 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+nul
+
+# Git backup
+.git_backup/
+
+# Cloudinary - תמונות שהורדנו מקומית (לא צריכות להיות ב-Git)
+/public/images/cloudinary
+/public/videos/cloudinary
+cloudinary-export.json
+cloudinary-export.csv
+cloudinary-urls.json
+export-cloudinary.js
+download-images.js
+CLOUDINARY-INSTRUCTIONS.md
+CLOUDINARY-SETUP-COMPLETE.md
+CLOUDINARY-USAGE.md
+fix-cloudinary-urls.js
+upload-missing-image.js
+src/temp_images.txt
+
+# תמונות ווידאו מקומיים (כל התמונות נמצאות ב-Cloudinary)
+/public/images/**/*.jpg
+/public/images/**/*.jpeg
+/public/images/**/*.png
+/public/images/**/*.gif
+/public/images/**/*.webp
+/public/images/**/*.svg
+/public/videos/**/*.mp4
+/public/videos/**/*.webm
+/public/videos/**/*.mov
+/src/assets/images/
+/src/assets/videos/

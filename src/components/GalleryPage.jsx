@@ -14,15 +14,25 @@ const GalleryPage = () => {
       <style>{`
         @media (max-width: 768px) {
           .gallery-title {
-            font-size: 38px !important;
+            font-size: 2.5rem !important;
             padding: 0 20px !important;
+            background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: 0 2px 8px rgba(201, 161, 75, 0.4) !important;
           }
         }
 
         @media (max-width: 480px) {
           .gallery-title {
-            font-size: 28px !important;
+            font-size: 2rem !important;
             padding: 0 15px !important;
+            background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: 0 2px 6px rgba(201, 161, 75, 0.4) !important;
           }
         }
       `}</style>
@@ -91,7 +101,7 @@ const GalleryPage = () => {
           transition={{ duration: 1, delay: 0.2 }}
           style={{
             textAlign: 'center',
-            marginBottom: '4rem',
+            marginBottom: '3rem',
             padding: '0 2rem'
           }}
         >

@@ -169,10 +169,10 @@ const AboutPage = () => {
 
         /* סקשן הסיפור שלנו */
         .our-story-section {
-          padding: 60px 40px;
+          padding: 40px 40px;
           position: relative;
           text-align: center;
-          margin-top: -60px;
+          margin-top: -40px;
         }
 
         @media (min-width: 769px) {
@@ -192,8 +192,23 @@ const AboutPage = () => {
 
         @media (max-width: 768px) {
           .our-story-section {
-            padding: 40px 20px;
+            padding: 30px 20px;
             margin-top: 0;
+            position: relative;
+          }
+
+          .our-story-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(ellipse at center, rgba(201, 161, 75, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
           }
         }
 
@@ -212,9 +227,16 @@ const AboutPage = () => {
 
         @media (max-width: 768px) {
           .our-story-title {
-            font-size: 32px;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(201, 161, 75, 0.3);
+            position: relative;
+            z-index: 2;
           }
         }
 
@@ -270,8 +292,23 @@ const AboutPage = () => {
         @media (max-width: 768px) {
           .our-story-content {
             font-size: 18px;
-            line-height: 1.6;
-            padding: 0 10px;
+            line-height: 1.7;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+              0 12px 30px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
           }
 
           .our-story-content::before {
@@ -282,6 +319,7 @@ const AboutPage = () => {
             height: 180px;
             background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(139, 92, 246, 0.10) 0%, rgba(124, 58, 237, 0.07) 40%, rgba(109, 40, 217, 0.04) 70%, transparent 100%);
             filter: blur(40px);
+            z-index: -1;
           }
         }
 
@@ -301,12 +339,20 @@ const AboutPage = () => {
             font-size: 20px;
             display: block;
             margin-top: 12px;
+            background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(201, 161, 75, 0.3);
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
           }
         }
 
         /* סקשן עומר */
         .omer-section {
-          padding: 80px 40px 30px;
+          padding: 50px 40px 30px;
           position: relative;
         }
 
@@ -396,15 +442,15 @@ const AboutPage = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 20px 30px;
+            padding: 30px 20px 20px;
           }
 
           .omer-header-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 15px;
             width: 100%;
             direction: rtl;
           }
@@ -457,9 +503,28 @@ const AboutPage = () => {
           .omer-content {
             text-align: right;
             width: 100%;
-            padding: 30px 20px;
+            padding: 25px 20px;
             position: relative;
-            margin-top: 20px;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+              0 15px 35px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 0 rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+          }
+
+          .omer-content:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.25);
           }
 
           .omer-content::before {
@@ -491,13 +556,19 @@ const AboutPage = () => {
 
         @media (max-width: 768px) {
           .omer-title {
-            font-size: 3.4rem;
-            margin-bottom: 30px;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             text-align: center;
             white-space: nowrap;
             letter-spacing: -0.3px;
-            font-weight: 600;
-            color: #ffffff;
+            font-weight: 700;
+            background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(201, 161, 75, 0.3);
+            position: relative;
+            z-index: 2;
           }
         }
 
@@ -513,28 +584,68 @@ const AboutPage = () => {
 
         @media (max-width: 768px) {
           .omer-description {
-            font-size: 20px;
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 1.6;
             margin-bottom: 16px;
             font-weight: 400;
-            color: #DDDDDD;
+            color: rgba(255, 255, 255, 0.9);
             letter-spacing: -0.1px;
             font-family: 'Varela Round', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
           }
         }
 
 
         /* Experience Section */
         .experience-section {
-          padding: 60px 40px;
+          padding: 40px 40px;
           position: relative;
           text-align: center;
         }
 
         @media (max-width: 768px) {
           .experience-section {
-            padding: 40px 20px;
+            padding: 30px 20px;
+            position: relative;
           }
+
+          .experience-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(201, 161, 75, 0.3);
+            position: relative;
+            z-index: 2;
+          }
+
+          .experience-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(ellipse at center, rgba(201, 161, 75, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+          }
+        }
+
+        .experience-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-align: center;
+          margin-bottom: 30px;
+          letter-spacing: -0.5px;
+          line-height: 1.2;
         }
 
         .experience-content {
@@ -567,8 +678,23 @@ const AboutPage = () => {
         @media (max-width: 768px) {
           .experience-content {
             font-size: 18px;
-            line-height: 1.6;
-            padding: 0 10px;
+            line-height: 1.7;
+            padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+              0 12px 30px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
           }
 
           .experience-content::before {
@@ -579,6 +705,7 @@ const AboutPage = () => {
             height: 180px;
             background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(139, 92, 246, 0.10) 0%, rgba(124, 58, 237, 0.07) 40%, rgba(109, 40, 217, 0.04) 70%, transparent 100%);
             filter: blur(40px);
+            z-index: -1;
           }
         }
 
@@ -711,7 +838,7 @@ const AboutPage = () => {
           }
 
           .cta-section {
-            padding: 40px 25px 60px;
+            padding: 30px 20px 40px;
           }
 
           .cta-container {
@@ -744,10 +871,10 @@ const AboutPage = () => {
           }
 
           .form-input:focus {
-            background: rgba(255, 255, 255, 0.22) !important;
-            border: 1.5px solid rgba(201, 161, 75, 0.5) !important;
-            box-shadow: 0 0 0 3px rgba(201, 161, 75, 0.15) !important;
-            transform: translateY(-1px) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            border: 1.5px solid rgba(201, 161, 75, 0.6) !important;
+            box-shadow: 0 0 0 3px rgba(201, 161, 75, 0.2), 0 4px 20px rgba(201, 161, 75, 0.3) !important;
+            transform: translateY(-2px) !important;
           }
 
           .form-input::placeholder {
@@ -767,7 +894,12 @@ const AboutPage = () => {
 
           .submit-btn:hover {
             background: linear-gradient(135deg, #D4AF5E 0%, #B88A61 100%) !important;
-            box-shadow: 0 6px 20px rgba(201, 161, 75, 0.45) !important;
+            box-shadow: 0 8px 25px rgba(201, 161, 75, 0.5), 0 0 0 1px rgba(201, 161, 75, 0.3) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+          }
+
+          .submit-btn:active {
+            transform: translateY(-1px) scale(1.02) !important;
           }
         }
 
@@ -920,7 +1052,7 @@ const AboutPage = () => {
                     : { opacity: 0 })
             }
           >
-            <h2 className="our-story-title">קצת עלינו</h2>
+            <h1 className="our-story-title">קצת עלינו</h1>
             <div className="our-story-content">
               <div className="our-story-stars">
                 <div className="our-story-star">✦</div>
@@ -972,8 +1104,37 @@ const AboutPage = () => {
                   animate={omerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
+                  {/* Floating particles */}
+                  {[...Array(4)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      style={{
+                        position: 'absolute',
+                        width: '3px',
+                        height: '3px',
+                        background: '#C9A14B',
+                        borderRadius: '50%',
+                        boxShadow: '0 0 6px #C9A14B',
+                        left: `${15 + i * 25}%`,
+                        top: `${10 + i * 15}%`,
+                        zIndex: 1
+                      }}
+                      animate={{
+                        y: [0, -15, 0],
+                        opacity: [0.3, 0.8, 0.3],
+                        scale: [1, 1.3, 1]
+                      }}
+                      transition={{
+                        duration: 2.5 + i * 0.5,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  ))}
+                  
                   <p className="omer-description">
-                    בוגר מיקסולוגיה בפריז עם מעל עשור ניסיון בעולם הקוקטיילים המרתק. מייסד OMC - המתמחים באמנות הקוקטיילים והפקת אירועים בלתי נשכחים.
+                    <strong>עומר הבעלים של OMC</strong>, בוגר מיקסולוגיה בפריז עם מעל עשור ניסיון בעולם הקוקטיילים המרתק. מייסד OMC - המתמחים באמנות הקוקטיילים והפקת אירועים בלתי נשכחים.
                   </p>
                 </motion.div>
               </>
@@ -1001,7 +1162,7 @@ const AboutPage = () => {
                 >
                   <h2 className="omer-title">הסיפור מאחורי OMC</h2>
                   <p className="omer-description">
-                    בוגר לימודי מיקסולוגיה בפריז ובעל ניסיון של מעל עשור בעולם הקוקטיילים. התשוקה שלי ליצירת משקאות ייחודיים ומרהיבים הובילה אותי ליצור את OMC. כל קוקטייל שאני מכין הוא סיפור בפני עצמו - שילוב של טכניקות מסורתיות עם חידושים מודרניים. המטרה שלי היא להפוך כל אירוע לחוויה בלתי נשכחת, שבה כל משקה מספר סיפור ומשאיר טעם של עוד.
+                    <strong>עומר הבעלים של OMC</strong>, בוגר לימודי מיקסולוגיה בפריז ובעל ניסיון של מעל עשור בעולם הקוקטיילים. התשוקה שלי ליצירת משקאות ייחודיים ומרהיבים הובילה אותי ליצור את OMC. כל קוקטייל שאני מכין הוא סיפור בפני עצמו - שילוב של טכניקות מסורתיות עם חידושים מודרניים. המטרה שלי היא להפוך כל אירוע לחוויה בלתי נשכחת, שבה כל משקה מספר סיפור ומשאיר טעם של עוד.
                   </p>
                 </motion.div>
               </>
@@ -1016,6 +1177,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
+            <h3 className="experience-title">החוויה שלנו</h3>
             <div className="experience-content">
               בכל אירוע שאנחנו מלווים – המטרה שלנו אחת: ליצור רגעים שהופכים לחוויות וזיכרונות.
               <br /><br />

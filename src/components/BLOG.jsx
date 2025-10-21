@@ -880,156 +880,301 @@ const BlogPage = ({ onNavigateToArticle }) => {
       {/* CTA Section */}
       <motion.section 
         className="cta-section"
+        style={{
+          width: '100%',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: isMobile ? '2rem 1.25rem' : '3rem 2rem',
+          marginTop: '20px',
+          zIndex: 1
+        }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
+        <style>{`
+          .cta-container {
+            background: rgba(255, 255, 255, 0.02);
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+              0 15px 35px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-width: 1200px;
+            width: 100%;
+            padding: 50px;
+            z-index: 2;
+          }
+
+          .cta-container:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.25);
+          }
+
+          .cta-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-family: 'Varela Round', sans-serif;
+            letter-spacing: -0.5px;
+          }
+
+          .form-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            direction: rtl;
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex: 1;
+            min-width: 200px;
+          }
+
+          .form-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 17px;
+            border-radius: 16px;
+            direction: rtl;
+            backdrop-filter: blur(15px);
+            box-sizing: border-box;
+            font-family: 'Varela Round', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            outline: none;
+          }
+
+          .form-textarea {
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 17px;
+            border-radius: 16px;
+            direction: rtl;
+            backdrop-filter: blur(15px);
+            box-sizing: border-box;
+            font-family: 'Varela Round', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            outline: none;
+            resize: vertical;
+            min-height: 100px;
+          }
+
+          .form-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-family: 'Varela Round', sans-serif;
+          }
+
+          .form-feedback {
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            font-family: 'Varela Round', sans-serif;
+          }
+
+          .success-feedback {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #22c55e;
+          }
+
+          .error-feedback {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #ef4444;
+          }
+
+          .required-asterisk {
+            color: #ef4444;
+            margin-left: 4px;
+          }
+
+          .form-input:focus {
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+          }
+
+          .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            opacity: 1;
+          }
+
+          .submit-btn {
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            min-width: 160px;
+            width: auto;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-family: 'Varela Round', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.1px;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .submit-btn:hover {
+            background: linear-gradient(135deg, #0088FF 0%, #0066E6 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
+          }
+
+          .submit-btn:active {
+            transform: translateY(-1px) scale(1.02);
+          }
+
+          @media (max-width: 768px) {
+            .cta-container {
+              padding: 25px 20px;
+              border-radius: 20px;
+              margin: 0 15px;
+              box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+            }
+
+            .cta-title {
+              font-size: 1.4rem !important;
+              margin-bottom: 1.5rem !important;
+            }
+
+            .form-container {
+              flex-direction: column !important;
+              gap: 0.9rem !important;
+            }
+
+            .form-input {
+              min-width: 100% !important;
+              padding: 14px 18px !important;
+              font-size: 16px !important;
+              border-radius: 14px !important;
+              background: rgba(255, 255, 255, 0.15) !important;
+              border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+              transition: all 0.3s ease !important;
+            }
+
+            .form-input:focus {
+              background: rgba(255, 255, 255, 0.22) !important;
+              border: 1.5px solid rgba(201, 161, 75, 0.5) !important;
+              box-shadow: 0 0 0 3px rgba(201, 161, 75, 0.15) !important;
+              transform: translateY(-1px) !important;
+            }
+
+            .form-input::placeholder {
+              color: rgba(255, 255, 255, 0.75) !important;
+              font-size: 16px !important;
+            }
+
+            .submit-btn {
+              width: 100%;
+              padding: 16px 28px !important;
+              font-size: 16px !important;
+              margin-top: 0.5rem;
+              background: linear-gradient(135deg, #C9A14B 0%, #A67C52 100%) !important;
+              box-shadow: 0 4px 16px rgba(201, 161, 75, 0.35) !important;
+              border-radius: 14px !important;
+            }
+
+            .submit-btn:hover {
+              background: linear-gradient(135deg, #D4AF5E 0%, #B88A61 100%) !important;
+              box-shadow: 0 6px 20px rgba(201, 161, 75, 0.45) !important;
+            }
+          }
+        `}</style>
+        
+        {/* רדיאל גרדיאנט */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '1200px',
+          height: '400px',
+          background: 'radial-gradient(ellipse at center, rgba(138, 43, 226, 0.06) 0%, rgba(75, 0, 130, 0.04) 25%, rgba(25, 25, 112, 0.03) 50%, transparent 80%)',
+          filter: 'blur(60px)',
+          zIndex: 1,
+          borderRadius: '50%',
+          pointerEvents: 'none'
+        }} />
+        
         <motion.div
           className="cta-container"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ position: 'relative', zIndex: 2 }}
         >
-          <div style={{ textAlign: 'center', width: '100%', marginBottom: isMobile ? '1.5rem' : '2rem' }}>
-            <h2 style={{
-              fontSize: isMobile ? '1.3rem' : '1.6rem',
-              fontWeight: '600',
-              color: 'transparent',
-              background: 'linear-gradient(180deg, #ffffff 0%, #cccccc 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontFamily: "'Varela Round', sans-serif",
-              margin: 0,
-              letterSpacing: '-0.5px',
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
-              lineHeight: isMobile ? '1.3' : '1.2',
-              padding: isMobile ? '0 10px' : '0'
-            }}>
-              השאירו פרטים ונחזור אליכם
-            </h2>
-          </div>
-
-          <form style={{
-            display: 'flex',
-            width: '100%',
-            gap: isMobile ? '1rem' : '1.5rem',
-            direction: 'rtl',
-            flexDirection: isMobile ? 'column' : 'row'
-          }}>
-            <div style={{ flex: 1 }}>
-              <input
-                type="text"
-                name="name"
-                placeholder="השם שלך"
-                required
-                style={{
-                  width: '100%',
-                  padding: isMobile ? '16px 20px' : '18px 24px',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: isMobile ? '10px' : '12px',
-                  color: 'white',
-                  fontSize: isMobile ? '15px' : '16px',
-                  fontFamily: "'Varela Round', sans-serif",
-                  outline: 'none',
-                  transition: 'all 0.3s ease',
-                  boxSizing: 'border-box',
-                  direction: 'rtl'
-                }}
-                onFocus={(e) => {
-                  e.target.style.background = 'rgba(255, 255, 255, 0.12)';
-                  e.target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.background = 'rgba(255, 255, 255, 0.08)';
-                  e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                }}
-              />
-            </div>
-
-            <div style={{ flex: 1 }}>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="מספר הטלפון"
-                required
-                style={{
-                  width: '100%',
-                  padding: isMobile ? '16px 20px' : '18px 24px',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: isMobile ? '10px' : '12px',
-                  color: 'white',
-                  fontSize: isMobile ? '15px' : '16px',
-                  fontFamily: "'Varela Round', sans-serif",
-                  direction: 'rtl',
-                  outline: 'none',
-                  transition: 'all 0.3s ease',
-                  boxSizing: 'border-box'
-                }}
-                onFocus={(e) => {
-                  e.target.style.background = 'rgba(255, 255, 255, 0.12)';
-                  e.target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.background = 'rgba(255, 255, 255, 0.08)';
-                  e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                }}
-              />
-            </div>
-
+          <h2 className="cta-title">השאירו פרטים ונחזור אליכם</h2>
+          
+          <form className="form-container">
+            <input 
+              type="text" 
+              name="name"
+              placeholder="השם שלך"
+              className="form-input"
+              aria-label="שם"
+              required
+            />
+            
+            <input 
+              type="tel" 
+              name="phone"
+              placeholder="מספר הטלפון"
+              className="form-input"
+              aria-label="טלפון"
+              required
+            />
+            
             <button
               type="submit"
               className="submit-btn"
-              style={{
-                padding: isMobile ? '16px 32px' : '18px 36px',
-                background: 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)',
-                border: 'none',
-                borderRadius: isMobile ? '10px' : '12px',
-                color: 'white',
-                fontSize: isMobile ? '16px' : '17px',
-                cursor: 'pointer',
-                minWidth: isMobile ? '140px' : '160px',
-                width: isMobile ? '100%' : 'auto',
-                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                fontFamily: "'Varela Round', sans-serif",
-                fontWeight: '600',
-                letterSpacing: '-0.1px',
-                boxShadow: isMobile ? '0 3px 12px rgba(0, 122, 255, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2)' : '0 4px 16px rgba(0, 122, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
-                textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
-                position: 'relative',
-                overflow: 'hidden',
-                marginTop: isMobile ? '0.5rem' : '0'
-              }}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.target.style.background = 'linear-gradient(135deg, #0088FF 0%, #0066E6 100%)';
-                  e.target.style.transform = 'translateY(-2px) scale(1.02)';
-                  e.target.style.boxShadow = '0 8px 24px rgba(0, 122, 255, 0.4), 0 16px 40px rgba(0, 0, 0, 0.3)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.target.style.background = 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)';
-                  e.target.style.transform = 'translateY(0) scale(1)';
-                  e.target.style.boxShadow = '0 4px 16px rgba(0, 122, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)';
-                }
-              }}
-              onTouchStart={(e) => {
-                if (isMobile) {
-                  e.target.style.background = 'linear-gradient(135deg, #0088FF 0%, #0066E6 100%)';
-                  e.target.style.transform = 'scale(0.98)';
-                }
-              }}
-              onTouchEnd={(e) => {
-                if (isMobile) {
-                  e.target.style.background = 'linear-gradient(135deg, #007AFF 0%, #0051D5 100%)';
-                  e.target.style.transform = 'scale(1)';
-                }
-              }}
+              aria-label="שלח טופס"
             >
               שלח
             </button>

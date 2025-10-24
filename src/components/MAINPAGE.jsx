@@ -61,11 +61,11 @@ const GRID_SYSTEM = {
   },
   // Element spacing - consistent gaps between elements
   elementSpacing: {
-    mobile: { small: '1rem', medium: '2rem', large: '3rem' },
-    tablet: { small: '1.25rem', medium: '2.5rem', large: '3.5rem' },
-    laptop: { small: '1.5rem', medium: '3rem', large: '4rem' },
-    desktop: { small: '1.75rem', medium: '3.5rem', large: '4.5rem' },
-    large: { small: '2rem', medium: '4rem', large: '5rem' }
+    mobile: { xsmall: '0.3rem', small: '1rem', medium: '2rem', large: '3rem' },
+    tablet: { xsmall: '0.5rem', small: '1.25rem', medium: '2.5rem', large: '3.5rem' },
+    laptop: { xsmall: '0.7rem', small: '1.5rem', medium: '3rem', large: '4rem' },
+    desktop: { xsmall: '0.8rem', small: '1.75rem', medium: '3.5rem', large: '4.5rem' },
+    large: { xsmall: '1rem', small: '2rem', medium: '4rem', large: '5rem' }
   },
   // Max content widths
   maxWidth: {
@@ -631,7 +631,13 @@ const CompanyCarouselSection = React.memo(() => {
   return (
     <section style={{
       width: '100%',
-      padding: getElementSpacing('medium') + ' 0'
+      padding: getResponsiveValue({
+        mobile: getElementSpacing('medium') + ' 0',
+        tablet: getElementSpacing('medium') + ' 0',
+        laptop: getElementSpacing('xsmall') + ' 0',
+        desktop: getElementSpacing('xsmall') + ' 0',
+        large: getElementSpacing('xsmall') + ' 0'
+      })
     }}>
       <style>{`
         .logo-carousel .slick-track {
@@ -714,7 +720,7 @@ const HebrewTextSection = React.memo(() => {
       padding: getResponsiveValue({
         mobile: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
         tablet: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
-        laptop: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+        laptop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
         desktop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
         large: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`
       }),
@@ -725,9 +731,9 @@ const HebrewTextSection = React.memo(() => {
       minHeight: getResponsiveValue({
         mobile: '40vh',
         tablet: '40vh',
-        laptop: '40vh',
-        desktop: '30vh',
-        large: '30vh'
+        laptop: '30vh',
+        desktop: '20vh',
+        large: '20vh'
       })
     }}>
       <style>{`
@@ -931,11 +937,6 @@ const OurServicesSection = React.memo(() => {
 
   const servicesData = useMemo(() => [
     {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/forobs30u30_csnpjj.jpg",
-      text: "אירועי חברה",
-      description: "ליצור חיבור אמיתי בין אנשים ולשבור שגרה - חוויה בלתי נשכחת"
-    },
-    {
       image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/2024-09-06GAVRIEL-126_m0bybb.jpg",
       text: "אירועים פרטיים",
       description: "בין בר מצווה לחתונת זהב - נגיע לכל מקום ונאתגר אתכם :)"
@@ -946,19 +947,14 @@ const OurServicesSection = React.memo(() => {
       description: "משקה שהאורח לא ישכח - הקיק של OMC בטעמים ובמקצועיות"
     },
     {
+      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/forobs30u30_csnpjj.jpg",
+      text: "אירועי חברה",
+      description: "ליצור חיבור אמיתי בין אנשים ולשבור שגרה - חוויה בלתי נשכחת"
+    },
+    {
       image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/barista-putting-alcohol-into-cocktail-glass-with-syrup-ice-cubes_thuy44.jpg",
       text: "סדנאות קוקטיילים",
       description: "איזה כיף להעביר ידע! יצירתיות, עבודה צוותית וצחוק - נהפוך אתכם לחברים המקיסולוגיים"
-    },
-    {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/forbs30u302-_h9lrig.jpg",
-      text: "אירועי חברה מיוחדים",
-      description: "בין Happy Hour שגרתי לאירוע הנפקה מרשים - צבע, אנרגיה וחוויה"
-    },
-    {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/cocktail1_zmqwwx.png",
-      text: "קוקטיילים ייחודיים",
-      description: "משקאות מותאמים אישית ויצירות קולינריות מיוחדות"
     }
   ], []);
 
@@ -1041,14 +1037,35 @@ const OurServicesSection = React.memo(() => {
           >
           {servicesData.map((item, index) => (
             <SwiperSlide key={index}>
-              <div style={{
-                height: '360px',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                ...sharedStyles.glassCard,
-                position: 'relative',
-                margin: '0 5px'
-              }}>
+              <div 
+                style={{
+                  height: '360px',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  ...sharedStyles.glassCard,
+                  position: 'relative',
+                  margin: '0 5px',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+                onClick={() => {
+                  // Navigate to services page with service parameter using internal navigation
+                  window.dispatchEvent(new CustomEvent('navigateToPage', {
+                    detail: { 
+                      pageId: 'services',
+                      serviceId: index + 1
+                    }
+                  }));
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02) translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.5)';
+                }}
+              >
                 <div style={{
                   width: '100%',
                   height: '300px',
@@ -1190,13 +1207,13 @@ const OurServicesSection = React.memo(() => {
               desktop: 2,
               large: 1.8
             })}
-            textColor="rgba(255, 255, 255, 0.9)"
+            textColor="#FFFFFF"
             font={getResponsiveValue({
-              mobile: "400 16px Varela Round, sans-serif",
-              tablet: "400 18px Varela Round, sans-serif",
-              laptop: "400 20px Varela Round, sans-serif",
-              desktop: "400 22px Varela Round, sans-serif",
-              large: "400 24px Varela Round, sans-serif"
+              mobile: "700 18px Varela Round, sans-serif",
+              tablet: "700 20px Varela Round, sans-serif",
+              laptop: "700 22px Varela Round, sans-serif",
+              desktop: "700 24px Varela Round, sans-serif",
+              large: "700 26px Varela Round, sans-serif"
             })}
             scrollSpeed={3}
             scrollEase={0.08}
@@ -1709,7 +1726,13 @@ const AboutUsSection = React.memo(() => {
     <div style={{
       position: 'relative',
       width: '100%',
-      padding: `${getElementSpacing('small')} ${getElementSpacing('medium')}`
+      padding: getResponsiveValue({
+        mobile: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+        tablet: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+        laptop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
+        desktop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
+        large: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`
+      })
     }}>
       <div style={{
         position: 'absolute',

@@ -16,14 +16,18 @@ import DangerousMode from './DangerousMode';
 const AppRouter = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [selectedService, setSelectedService] = useState(null);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 1024);
 
   // פונקציה לניווט בין דפים
-  const navigateToPage = (pageId, articleData = null) => {
-    console.log('AppRouter: Navigating to', pageId);
+  const navigateToPage = (pageId, articleData = null, serviceId = null) => {
+    console.log('AppRouter: Navigating to', pageId, 'serviceId:', serviceId);
     setCurrentPage(pageId);
     if (articleData) {
       setSelectedArticle(articleData);
+    }
+    if (serviceId) {
+      setSelectedService(serviceId);
     }
     // גלילה לראש העמוד
     window.scrollTo(0, 0);
@@ -37,6 +41,9 @@ const AppRouter = () => {
         setCurrentPage(detail.pageId);
         if (detail.articleData) {
           setSelectedArticle(detail.articleData);
+        }
+        if (detail.serviceId) {
+          setSelectedService(detail.serviceId);
         }
         window.scrollTo(0, 0);
       }
@@ -73,7 +80,7 @@ const AppRouter = () => {
       case 'home':
         return <MAINPAGE />;
       case 'services':
-        return <ServicesPage />;
+        return <ServicesPage selectedService={selectedService} />;
       case 'about':
         return <AboutPage />;
       case 'gallery':

@@ -651,12 +651,12 @@ const AboutPage = () => {
         .experience-content {
           max-width: 900px;
           margin: 0 auto;
-          font-size: 22px;
-          line-height: 1.7;
+          font-size: 20px;
+          line-height: 1.5;
           color: #CCCCCC;
           font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
           font-weight: 400;
-          letter-spacing: -0.2px;
+          letter-spacing: -0.1px;
           position: relative;
           text-align: center;
         }
@@ -677,9 +677,9 @@ const AboutPage = () => {
 
         @media (max-width: 768px) {
           .experience-content {
-            font-size: 18px;
-            line-height: 1.7;
-            padding: 25px 20px;
+            font-size: 17px;
+            line-height: 1.5;
+            padding: 20px 18px;
             background: rgba(255, 255, 255, 0.02);
             background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
             backdrop-filter: blur(20px) brightness(1.1) saturate(180%);
@@ -1179,11 +1179,7 @@ const AboutPage = () => {
           >
             <h3 className="experience-title">החוויה שלנו</h3>
             <div className="experience-content">
-              בכל אירוע שאנחנו מלווים – המטרה שלנו אחת: ליצור רגעים שהופכים לחוויות וזיכרונות.
-              <br /><br />
-              אנחנו רואים בבר לא רק עמדת שתייה, אלא לב האירוע – המקום שבו האורחים נפגשים, נפתחים וצוחקים יחד.
-              <br /><br />
-              עם שירות מדויק, עיצוב מוקפד וקוקטיילים שגורמים לכל אחד לעצור לרגע ולהגיד "וואו" – אנחנו מבטיחים שכל אירוע יקבל את הטוויסט שיזכרו עוד הרבה אחרי שהכוס האחרונה תתרוקן.
+              בכל אירוע שאנחנו מלווים – המטרה שלנו אחת: ליצור רגעים שהופכים לחוויות וזיכרונות. אנחנו רואים בבר לא רק עמדת שתייה, אלא לב האירוע – המקום שבו האורחים נפגשים, נפתחים וצוחקים יחד. עם שירות מדויק, עיצוב מוקפד וקוקטיילים שגורמים לכל אחד לעצור לרגע ולהגיד "וואו" – אנחנו מבטיחים שכל אירוע יקבל את הטוויסט שיזכרו עוד הרבה אחרי שהכוס האחרונה תתרוקן.
             </div>
           </motion.div>
 

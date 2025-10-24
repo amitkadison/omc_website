@@ -598,7 +598,7 @@ const ContactPage = () => {
           {/* כותרת הדף */}
           <motion.div className="contact-header" variants={itemVariants}>
             <motion.h1 className="main-title" variants={itemVariants}>
-              בואו נתחיל משהו יחד
+              האירוע שלכם מתחיל כאן
             </motion.h1>
             <motion.p 
               className="subtitle" 

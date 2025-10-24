@@ -8,7 +8,6 @@ const PinterestGalleryNew = React.memo(() => {
   const { getResponsiveValue } = useResponsive();
   const [selectedImage, setSelectedImage] = useState(null);
   const [clickPosition, setClickPosition] = useState(null);
-  const [hoveredImage, setHoveredImage] = useState(null);
 
   // Device-specific column configuration
   const columns = getResponsiveValue({
@@ -108,14 +107,6 @@ const PinterestGalleryNew = React.memo(() => {
     setClickPosition(null);
   };
 
-  const handleMouseEnter = (item) => {
-    setHoveredImage(item);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredImage(null);
-  };
-
   // Determine which gallery items to use based on screen size
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   const currentGalleryItems = isMobile ? mobileGalleryItems : galleryItems;
@@ -173,8 +164,6 @@ const PinterestGalleryNew = React.memo(() => {
                 position: 'relative'
               }}
               onClick={(e) => handleImageClick(item, e)}
-              onMouseEnter={() => handleMouseEnter(item)}
-              onMouseLeave={handleMouseLeave}
             >
               <img
                 src={item.img}
@@ -194,69 +183,6 @@ const PinterestGalleryNew = React.memo(() => {
                   e.target.style.display = 'none';
                 }}
               />
-              
-              {/* Hover Overlay with Text */}
-              <AnimatePresence>
-                {hoveredImage && hoveredImage.id === item.id && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      background: 'linear-gradient(transparent, rgba(0, 0, 0, 0.9))',
-                      padding: '20px',
-                      color: 'white',
-                      textAlign: 'center',
-                      zIndex: 10
-                    }}
-                  >
-                    <motion.h3
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.1, duration: 0.3 }}
-                      style={{
-                        fontSize: getResponsiveValue({
-                          mobile: '10px',
-                          tablet: '12px',
-                          laptop: '14px',
-                          desktop: '16px',
-                          large: '18px'
-                        }),
-                        fontWeight: 'bold',
-                        marginBottom: '8px',
-                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
-                      }}
-                    >
-                      {item.eventName}
-                    </motion.h3>
-                    <motion.p
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.2, duration: 0.3 }}
-                      style={{
-                        fontSize: getResponsiveValue({
-                          mobile: '9px',
-                          tablet: '11px',
-                          laptop: '13px',
-                          desktop: '15px',
-                          large: '17px'
-                        }),
-                        lineHeight: 1.4,
-                        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
-                        fontStyle: 'italic',
-                        opacity: 0.9
-                      }}
-                    >
-                      "{item.clientQuote}"
-                    </motion.p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
           ))}
         </motion.div>
@@ -369,49 +295,6 @@ const PinterestGalleryNew = React.memo(() => {
                 e.target.src = '/placeholder-image.jpg';
               }}
             />
-            
-            {/* Text Overlay */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 30, opacity: 0 }}
-              transition={{ delay: 0.3, duration: 0.3 }}
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)',
-                padding: '15px',
-                textAlign: 'right',
-                direction: 'rtl',
-                borderRadius: '0 0 20px 20px'
-              }}
-            >
-              <h3 
-                style={{
-                  color: 'white',
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  marginBottom: '6px',
-                  fontFamily: 'Heebo, sans-serif',
-                  lineHeight: '1.3'
-                }}
-              >
-                {selectedImage.eventName}
-              </h3>
-              <p 
-                style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  fontSize: '13px',
-                  fontStyle: 'italic',
-                  lineHeight: '1.4',
-                  fontFamily: 'Heebo, sans-serif'
-                }}
-              >
-                "{selectedImage.clientQuote}"
-              </p>
-            </motion.div>
           </motion.div>
         </AnimatePresence>
       )}

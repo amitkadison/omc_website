@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useResponsive } from '../hooks/useResponsive';
 import { galleryItems } from '../data/galleryData';
 
 const PinterestGallery = React.memo(() => {
   const { getResponsiveValue } = useResponsive();
-  const [hoveredImage, setHoveredImage] = useState(null);
 
   const columns = getResponsiveValue({
     mobile: 2,
@@ -43,7 +42,7 @@ const PinterestGallery = React.memo(() => {
   };
 
   const itemVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 60,
       scale: 0.8
@@ -57,14 +56,6 @@ const PinterestGallery = React.memo(() => {
         ease: "easeOut"
       }
     }
-  };
-
-  const handleMouseEnter = (item) => {
-    setHoveredImage(item);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredImage(null);
   };
 
   return (
@@ -127,8 +118,6 @@ const PinterestGallery = React.memo(() => {
                 height: isMobile ? `${randomHeight}px` : 'auto',
                 width: '100%'
               }}
-              onMouseEnter={() => handleMouseEnter(item)}
-              onMouseLeave={handleMouseLeave}
             >
             <img
               src={item.img}
@@ -149,69 +138,6 @@ const PinterestGallery = React.memo(() => {
                 e.target.style.display = 'none';
               }}
             />
-            
-            {/* Hover Overlay with Text */}
-            <AnimatePresence>
-              {hoveredImage && hoveredImage.id === item.id && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    background: 'linear-gradient(transparent, rgba(0, 0, 0, 0.9))',
-                    padding: '20px',
-                    color: 'white',
-                    textAlign: 'center',
-                    zIndex: 10
-                  }}
-                >
-                  <motion.h3
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.1, duration: 0.3 }}
-                    style={{
-                      fontSize: getResponsiveValue({
-                        mobile: '10px',
-                        tablet: '12px',
-                        laptop: '14px',
-                        desktop: '16px',
-                        large: '18px'
-                      }),
-                      fontWeight: 'bold',
-                      marginBottom: '8px',
-                      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
-                    }}
-                  >
-                    {item.eventName}
-                  </motion.h3>
-                  <motion.p
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.3 }}
-                    style={{
-                      fontSize: getResponsiveValue({
-                        mobile: '9px',
-                        tablet: '11px',
-                        laptop: '13px',
-                        desktop: '15px',
-                        large: '17px'
-                      }),
-                      lineHeight: 1.4,
-                      textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
-                      fontStyle: 'italic',
-                      opacity: 0.9
-                    }}
-                  >
-                    "{item.clientQuote}"
-                  </motion.p>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </motion.div>
           );
         })}

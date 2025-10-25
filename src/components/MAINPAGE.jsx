@@ -177,7 +177,7 @@ const GlobalStyles = () => (
 // ========================================================================================
 // HERO SECTION
 // ========================================================================================
-const HeroSection = React.memo(() => {
+const HeroSection = React.memo(({ onButtonClick }) => {
   const curtainLeftRef = useRef(null);
   const curtainRightRef = useRef(null);
   const contentRef = useRef(null);
@@ -552,6 +552,7 @@ const HeroSection = React.memo(() => {
           paddingBottom: state.isMobile ? '80px' : '0'
         }}>
           <motion.button
+            onClick={onButtonClick}
             style={{
               backgroundColor: state.isMobile ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
               border: state.isMobile ? '1px solid rgba(255, 255, 255, 0.3)' : `1.5px solid ${COLORS.white}`,
@@ -1227,11 +1228,11 @@ const OurServicesSection = React.memo(() => {
 // ========================================================================================
 // CTA SECTION
 // ========================================================================================
-const CTASection = React.memo(() => {
+const CTASection = React.memo(React.forwardRef((_props, ref) => {
   const { getSectionPadding, getElementSpacing } = useGridSpacing();
 
   return (
-    <section style={{
+    <section ref={ref} style={{
       width: '100%',
       position: 'relative',
       display: 'flex',
@@ -1528,7 +1529,7 @@ const CTASection = React.memo(() => {
       </motion.div>
     </section>
   );
-});
+}));
 
 // ========================================================================================
 // ABOUT US SECTION
@@ -2021,6 +2022,17 @@ const FAQSection = React.memo(() => {
 // MAIN PAGE COMPONENT
 // ========================================================================================
 const MAINPAGE = () => {
+  const ctaRef = useRef(null);
+
+  const scrollToCTA = () => {
+    if (ctaRef.current) {
+      ctaRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -2086,12 +2098,12 @@ const MAINPAGE = () => {
         }} />
 
         {/* All Sections */}
-        <HeroSection />
+        <HeroSection onButtonClick={scrollToCTA} />
         <CompanyCarouselSection />
         <HebrewTextSection />
         <AboutUsSection />
         <OurServicesSection />
-        <CTASection />
+        <CTASection ref={ctaRef} />
         <GallerySection />
         <FAQSection />
       </div>

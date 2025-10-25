@@ -971,7 +971,7 @@ const AboutPage = () => {
                   }}
                 >
                   <img
-                    src="https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_800/forobs30u30_csnpjj.jpg"
+                    src="https://res.cloudinary.com/doteohz34/image/upload/v1760632649/_DSC8019_fv21tc.jpg"
                     alt="אירועי חברה מקצועיים"
                     loading="lazy"
                   />
@@ -1023,7 +1023,7 @@ const AboutPage = () => {
                   }}
                 >
                   <img
-                    src="https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_800/cocktail1_zmqwwx.png"
+                    src="https://res.cloudinary.com/doteohz34/image/upload/v1760632650/_DSC8091_qmgv1z.jpg"
                     alt="קוקטיילים מקצועיים"
                     loading="lazy"
                   />

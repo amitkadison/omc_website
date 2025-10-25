@@ -188,37 +188,61 @@ const HeroSection = React.memo(({ onButtonClick }) => {
     isLoaded: false,
     showPreload: true,
     showVideo: false,
-    isMobile: false
+    isMobile: false,
+    videoPlaying: false,
+    showPlayPrompt: false
   });
+
+  // פונקציה להפעלת הוידאו
+  const playVideoHandler = async () => {
+    if (videoRef.current) {
+      try {
+        const video = videoRef.current;
+        video.muted = true;
+        video.playsInline = true;
+        await video.play();
+        setState(prev => ({ ...prev, videoPlaying: true, showPlayPrompt: false }));
+        console.log('Video playing successfully');
+      } catch (error) {
+        console.log('Play failed:', error);
+        setState(prev => ({ ...prev, showPlayPrompt: true }));
+      }
+    }
+  };
 
   useEffect(() => {
     const checkMobile = () => {
       setState(prev => ({ ...prev, isMobile: window.innerWidth <= 768 }));
     };
-    
+
     checkMobile();
     const throttledCheck = () => requestAnimationFrame(checkMobile);
     window.addEventListener('resize', throttledCheck);
-    
+
     return () => window.removeEventListener('resize', throttledCheck);
   }, []);
 
   useEffect(() => {
     gsap.set(contentRef.current, { opacity: 0 });
     setState(prev => ({ ...prev, showVideo: true }));
-    
+
     const preloadTimeline = gsap.timeline();
-    
+
+    // במובייל - animation קצרה הרבה יותר
+    const preloadDuration = state.isMobile ? 0.3 : ANIMATION_DURATIONS.normal;
+    const waitDuration = state.isMobile ? 0.8 : 2.2;
+    const fadeOutDuration = state.isMobile ? 0.2 : ANIMATION_DURATIONS.normal;
+
     preloadTimeline
       .to(preloadRef.current, {
         opacity: 1,
-        duration: ANIMATION_DURATIONS.normal
+        duration: preloadDuration
       })
-      .to({}, { duration: 2.2 })
+      .to({}, { duration: waitDuration })
       .to(preloadRef.current, {
         opacity: 0,
         scale: 1.1,
-        duration: ANIMATION_DURATIONS.normal,
+        duration: fadeOutDuration,
         onComplete: () => {
           setState(prev => ({ ...prev, showPreload: false }));
           startMainAnimation();
@@ -227,10 +251,10 @@ const HeroSection = React.memo(({ onButtonClick }) => {
 
     const startMainAnimation = () => {
       const tl = gsap.timeline();
-      
+
       tl.to([curtainLeftRef.current, curtainRightRef.current], {
         x: (index) => index === 0 ? '-100%' : '100%',
-        duration: 0.25,
+        duration: state.isMobile ? 0.15 : 0.25,
         ease: 'power2.inOut',
         onComplete: () => {
           setState(prev => ({ ...prev, isLoaded: true, showVideo: true }));
@@ -245,31 +269,125 @@ const HeroSection = React.memo(({ onButtonClick }) => {
     return () => {
       preloadTimeline.kill();
     };
-  }, []);
+  }, [state.isMobile]);
 
   useEffect(() => {
     if (videoRef.current && state.showVideo) {
       const playVideo = async () => {
         try {
-          videoRef.current.muted = true;
-          videoRef.current.loop = true;
-          videoRef.current.playsInline = true;
-          videoRef.current.autoplay = true;
-          
+          const video = videoRef.current;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.autoplay = true;
+
           if (state.isMobile) {
-            videoRef.current.load();
+            // במובייל - נסה להפעיל מיד ללא המתנה
+            video.load();
             await new Promise(resolve => setTimeout(resolve, 100));
           }
-          
-          await videoRef.current.play();
+
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+            console.log('Video playing successfully');
+          }
         } catch (error) {
           console.error('Video play failed:', error);
+          // נסה שוב אחרי רגע
+          if (state.isMobile) {
+            setTimeout(async () => {
+              try {
+                await videoRef.current.play();
+                console.log('Video playing after retry');
+              } catch (retryError) {
+                console.error('Video retry failed:', retryError);
+              }
+            }, 300);
+          }
         }
       };
-      
+
       playVideo();
     }
   }, [state.showVideo, state.isMobile]);
+
+  // אפקט נוסף שמופעל כש-isLoaded משתנה
+  useEffect(() => {
+    if (state.isLoaded && videoRef.current && state.isMobile) {
+      const forcePlay = async () => {
+        try {
+          await videoRef.current.play();
+          console.log('Video forced to play after loaded');
+        } catch (error) {
+          console.log('Could not force play:', error);
+        }
+      };
+
+      setTimeout(forcePlay, 100);
+    }
+  }, [state.isLoaded, state.isMobile]);
+
+  // אפקט נוסף להפעלת הסרטון במובייל מיד כשהדף נטען
+  useEffect(() => {
+    if (state.isMobile && videoRef.current) {
+      const attemptAutoplay = async () => {
+        try {
+          const video = videoRef.current;
+          video.muted = true;
+          video.playsInline = true;
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          video.setAttribute('x5-playsinline', '');
+          video.removeAttribute('controls');
+
+          // נסה להפעיל מספר פעמים
+          const tryPlay = async (attempts = 5) => {
+            for (let i = 0; i < attempts; i++) {
+              try {
+                await video.play();
+                console.log('Video started playing on attempt', i + 1);
+                setState(prev => ({ ...prev, videoPlaying: true }));
+                break; // הצליח - צא מהלולאה
+              } catch (err) {
+                if (i === attempts - 1) throw err;
+                await new Promise(resolve => setTimeout(resolve, 300 * (i + 1)));
+              }
+            }
+          };
+
+          await tryPlay();
+        } catch (error) {
+          console.log('Autoplay blocked - will try on user interaction');
+        }
+      };
+
+      // נסה מיד
+      attemptAutoplay();
+
+      // נסה שוב אחרי זמנים שונים
+      const timers = [
+        setTimeout(attemptAutoplay, 300),
+        setTimeout(attemptAutoplay, 600),
+        setTimeout(attemptAutoplay, 1000),
+        setTimeout(attemptAutoplay, 1500)
+      ];
+
+      // הוסף event listeners לאינטראקציות - כל אחד יפעיל את הוידאו
+      const events = ['touchstart', 'touchmove', 'scroll', 'click', 'touchend'];
+
+      events.forEach(eventType => {
+        document.addEventListener(eventType, playVideoHandler, { once: true, passive: true });
+      });
+
+      return () => {
+        timers.forEach(timer => clearTimeout(timer));
+        events.forEach(eventType => {
+          document.removeEventListener(eventType, playVideoHandler);
+        });
+      };
+    }
+  }, [state.isMobile]);
 
   return (
     <>
@@ -324,6 +442,27 @@ const HeroSection = React.memo(({ onButtonClick }) => {
           z-index: 1;
         }
 
+        /* הסתר כפתורי בקרה של הסרטון */
+        .hero-video::-webkit-media-controls {
+          display: none !important;
+        }
+
+        .hero-video::-webkit-media-controls-enclosure {
+          display: none !important;
+        }
+
+        .hero-video::-webkit-media-controls-panel {
+          display: none !important;
+        }
+
+        .hero-video::-webkit-media-controls-play-button {
+          display: none !important;
+        }
+
+        .hero-video::-webkit-media-controls-start-playback-button {
+          display: none !important;
+        }
+
         @media (max-width: 768px) {
           .real-logo { max-width: 85vw !important; max-height: 65vh !important; }
           .glass-card { width: 60px !important; height: 60px !important; font-size: 1.1rem !important; }
@@ -344,14 +483,19 @@ const HeroSection = React.memo(({ onButtonClick }) => {
           className="hero-video"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          muted
-          loop
-          playsInline
-          autoPlay
+          muted={true}
+          loop={true}
+          playsInline={true}
+          autoPlay={true}
+          controls={false}
           preload="auto"
           webkit-playsinline="true"
+          x5-video-player-type="h5"
+          x5-playsinline="true"
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
         >
-          <source src={state.isMobile ? "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto,vc_auto/video_capela_hmgf1k.mp4" : "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto/Ha-Cerem_-_Italy_Embassy_2023_GlebSmirnovPro-VEED_sfp5fa.mp4"} type="video/mp4" />
+          <source src={state.isMobile ? "https://res.cloudinary.com/doteohz34/video/upload/q_auto,f_auto,vc_auto/video_capela_hmgf1k.mp4" : "https://res.cloudinary.com/doteohz34/video/upload/v1761393966/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_2_oxayip.mp4"} type="video/mp4" />
         </motion.video>
 
         {/* Overlay */}
@@ -458,34 +602,6 @@ const HeroSection = React.memo(({ onButtonClick }) => {
             </motion.div>
           </div>
         )}
-
-        {/* Logo */}
-        <motion.div
-          style={{
-            position: 'absolute',
-            top: '2rem',
-            left: '2rem',
-            zIndex: 15
-          }}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: state.isLoaded ? 1 : 0, x: state.isLoaded ? 0 : -50 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="glass-card" style={{
-            width: '80px',
-            height: '80px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.4rem',
-            fontWeight: '400',
-            color: COLORS.white,
-            fontFamily: FONTS.display,
-            letterSpacing: '0.1em'
-          }}>
-            OMC
-          </div>
-        </motion.div>
 
         {/* Curtains */}
         <div ref={curtainLeftRef} style={{
@@ -699,6 +815,149 @@ const CompanyCarouselSection = React.memo(() => {
         </Slider>
       </div>
     </section>
+  );
+});
+
+// ========================================================================================
+// MOBILE HEADER SECTION (מה הופך אותנו)
+// ========================================================================================
+const MobileHeaderSection = React.memo(() => {
+  const { isMobile } = useResponsive();
+
+  if (!isMobile) return null;
+
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      style={{
+        width: '100%',
+        padding: '30px 20px 35px',
+        textAlign: 'center',
+        position: 'relative'
+      }}
+    >
+      {/* Background glow effect */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '250px',
+        height: '150px',
+        background: 'radial-gradient(ellipse at center, rgba(201, 161, 75, 0.1) 0%, transparent 70%)',
+        filter: 'blur(50px)',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }} />
+
+      {/* Stars decoration */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '8px',
+          marginBottom: '16px',
+          position: 'relative',
+          zIndex: 1
+        }}
+      >
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              opacity: [0.4, 0.8, 0.4],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 2,
+              delay: i * 0.3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{
+              color: COLORS.primary,
+              fontSize: '12px'
+            }}
+          >
+            ✦
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Main text */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        style={{
+          fontSize: '22px',
+          fontWeight: '300',
+          lineHeight: '1.4',
+          color: '#FFFFFF',
+          fontFamily: "'Noto Sans Hebrew', sans-serif",
+          position: 'relative',
+          zIndex: 1,
+          textShadow: '0 2px 15px rgba(0, 0, 0, 0.3)'
+        }}
+      >
+        <span style={{
+          background: 'linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          display: 'block',
+          marginBottom: '4px'
+        }}>
+          מה הופך אותנו
+        </span>
+        <span style={{
+          background: 'linear-gradient(135deg, #C9A14B 0%, #D4AF5E 50%, #C9A14B 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          display: 'block',
+          fontWeight: '400',
+          fontSize: '24px'
+        }}>
+          לשותף המועדף
+        </span>
+        <span style={{
+          background: 'linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          display: 'block',
+          fontSize: '20px',
+          marginTop: '2px'
+        }}>
+          על החברות והמפיקים הגדולים בישראל
+        </span>
+      </motion.div>
+
+      {/* Bottom decoration line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        style={{
+          width: '50px',
+          height: '1.5px',
+          background: `linear-gradient(90deg, transparent 0%, ${COLORS.primary} 50%, transparent 100%)`,
+          margin: '20px auto 0',
+          position: 'relative',
+          zIndex: 1
+        }}
+      />
+    </motion.section>
   );
 });
 
@@ -2100,6 +2359,7 @@ const MAINPAGE = () => {
         {/* All Sections */}
         <HeroSection onButtonClick={scrollToCTA} />
         <CompanyCarouselSection />
+        <MobileHeaderSection />
         <HebrewTextSection />
         <AboutUsSection />
         <OurServicesSection />

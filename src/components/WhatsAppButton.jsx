@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '972501234567'; // שנה למספר שלך
+  const phoneNumber = '972542512095'; // מספר טלפון נכון
 
   const handleClick = (e) => {
     e.stopPropagation();

@@ -41,7 +41,7 @@ const ContactForm = ({
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState({ type: '', message: '' });
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyv27ADVzWpy130odH7UqHm5N3GPz92WXd9Hlme6hr020qvcM42ez5XDRgHnZHuCiK_/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpMUn7YTDOnJ3KH_J2nM_j1rwANL1Yf_q9gyMuiikkqWOD1zTsT0V0N3X9AqW5V7va/exec';
   const SECRET_KEY = "MY_SECRET_KEY";
 
   // Global form handler setup

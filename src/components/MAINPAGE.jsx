@@ -1266,14 +1266,14 @@ const OurServicesSection = React.memo(() => {
       `}</style>
       
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.35,
-          delay: 0.1,
+          duration: 0.2,
+          delay: 0,
           ease: "easeOut"
         }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: false, amount: 0.1 }}
         style={{
           width: '100vw',
           marginLeft: 'calc(-50vw + 50%)',
@@ -1411,14 +1411,14 @@ const OurServicesSection = React.memo(() => {
       }}>
         {/* Title inside the carousel area */}
         <motion.div
-          initial={{ opacity: 0, y: (isMobile || isTablet) ? 15 : 30 }}
+          initial={{ opacity: 0, y: (isMobile || isTablet) ? 10 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
-            duration: (isMobile || isTablet) ? 0.3 : 0.8,
-            delay: (isMobile || isTablet) ? 0 : 0,
+            duration: (isMobile || isTablet) ? 0.2 : 0.8,
+            delay: 0,
             ease: "easeOut"
           }}
-          viewport={{ once: true, margin: "-20px" }}
+          viewport={{ once: false, amount: (isMobile || isTablet) ? 0.1 : 0.3 }}
           style={{
             textAlign: 'center',
             marginBottom: '0.5rem',

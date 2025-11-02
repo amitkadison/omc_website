@@ -1265,15 +1265,25 @@ const OurServicesSection = React.memo(() => {
         }
       `}</style>
       
-      <div style={{
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
-        marginRight: 'calc(-50vw + 50%)',
-        position: 'relative',
-        height: '420px',
-        overflow: 'visible',
-        paddingTop: '60px'
-      }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.35,
+          delay: 0.1,
+          ease: "easeOut"
+        }}
+        viewport={{ once: true, margin: "-50px" }}
+        style={{
+          width: '100vw',
+          marginLeft: 'calc(-50vw + 50%)',
+          marginRight: 'calc(-50vw + 50%)',
+          position: 'relative',
+          height: '420px',
+          overflow: 'visible',
+          paddingTop: '60px'
+        }}
+      >
           <Swiper
             ref={swiperRef}
             modules={[Pagination]}
@@ -1378,7 +1388,7 @@ const OurServicesSection = React.memo(() => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
     </>
   );
 
@@ -1401,12 +1411,16 @@ const OurServicesSection = React.memo(() => {
       }}>
         {/* Title inside the carousel area */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: (isMobile || isTablet) ? 15 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ 
-            textAlign: 'center', 
+          transition={{
+            duration: (isMobile || isTablet) ? 0.3 : 0.8,
+            delay: (isMobile || isTablet) ? 0 : 0,
+            ease: "easeOut"
+          }}
+          viewport={{ once: true, margin: "-20px" }}
+          style={{
+            textAlign: 'center',
             marginBottom: '0.5rem',
             position: 'relative',
             display: 'flex',

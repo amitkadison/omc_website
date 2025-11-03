@@ -111,20 +111,20 @@ const OMCSmartNavigationWithMobile = ({ currentPage = 'home', onNavigate }) => {
       }
 
       .omc-smart-navigation {
-        background: rgba(255, 255, 255, 0.04) !important;
-        backdrop-filter: blur(16px) saturate(1.2) !important;
-        -webkit-backdrop-filter: blur(16px) saturate(1.2) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 28px !important;
-        box-shadow: 
-          0 6px 24px rgba(0, 0, 0, 0.08),
-          0 1px 4px rgba(0, 0, 0, 0.04),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(20px) saturate(1.4) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 32px !important;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.12),
+          0 2px 8px rgba(0, 0, 0, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
         transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        padding: 4px 24px !important;
+        padding: 8px 32px !important;
         display: flex !important;
         align-items: center !important;
-        gap: 16px !important;
+        gap: 20px !important;
         contain: layout style paint !important;
         isolation: isolate !important;
       }
@@ -165,12 +165,12 @@ const OMCSmartNavigationWithMobile = ({ currentPage = 'home', onNavigate }) => {
 
       .omc-nav-tab {
         position: relative !important;
-        padding: 10px 28px !important;
-        border-radius: 20px !important;
+        padding: 14px 32px !important;
+        border-radius: 24px !important;
         background: transparent !important;
-        color: rgba(255, 255, 255, 0.75) !important;
-        font-weight: 500 !important;
-        font-size: 15px !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
         cursor: pointer !important;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
         text-decoration: none !important;
@@ -184,27 +184,31 @@ const OMCSmartNavigationWithMobile = ({ currentPage = 'home', onNavigate }) => {
         outline: none !important;
         -webkit-tap-highlight-color: transparent !important;
         white-space: nowrap !important;
-        letter-spacing: -0.01em !important;
+        letter-spacing: 0.01em !important;
         font-feature-settings: 'kern' 1, 'liga' 1 !important;
         -webkit-font-smoothing: antialiased !important;
         -moz-osx-font-smoothing: grayscale !important;
+        border: 1px solid transparent !important;
       }
 
       .omc-nav-tab:hover {
-        color: rgba(255, 255, 255, 0.95) !important;
-        transform: translateY(-1px) !important;
+        color: rgba(255, 255, 255, 1) !important;
+        transform: translateY(-2px) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
       }
 
       .omc-nav-tab.active {
-        background: rgba(255, 255, 255, 0.12) !important;
+        background: linear-gradient(135deg, rgba(201, 161, 75, 0.25) 0%, rgba(166, 124, 82, 0.2) 100%) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         color: rgba(255, 255, 255, 1) !important;
-        font-weight: 600 !important;
-        box-shadow: 
-          0 3px 12px rgba(0, 0, 0, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        font-weight: 700 !important;
+        box-shadow:
+          0 4px 16px rgba(201, 161, 75, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        border: 1.5px solid rgba(201, 161, 75, 0.4) !important;
       }
 
       /* אנימציות כניסה */

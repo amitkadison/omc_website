@@ -155,10 +155,17 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
 
         .menu-logo {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
           margin-bottom: 40px;
-          padding: 0 30px;
+          padding: 0 20px;
+        }
+
+        .menu-logo-image {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+          filter: drop-shadow(0 2px 8px rgba(201, 161, 75, 0.3));
         }
 
         .menu-close-button {
@@ -340,6 +347,11 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
           
           <div className="menu-panel">
             <div className="menu-logo">
+              <img
+                src="https://res.cloudinary.com/doteohz34/image/upload/q_auto:best,f_auto/realLOGO_ctei5e.png"
+                alt="OMC Logo"
+                className="menu-logo-image"
+              />
               <div
                 className="menu-close-button"
                 onClick={() => setIsOpen(false)}

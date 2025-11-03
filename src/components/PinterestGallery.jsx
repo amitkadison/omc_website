@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useResponsive } from '../hooks/useResponsive';
 import { galleryItems } from '../data/galleryData';
 
 const PinterestGallery = React.memo(() => {
   const { getResponsiveValue } = useResponsive();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const columns = getResponsiveValue({
     mobile: 2,
@@ -23,7 +33,7 @@ const PinterestGallery = React.memo(() => {
   });
 
   const gap = getResponsiveValue({
-    mobile: 12,
+    mobile: 8,
     tablet: 16,
     laptop: 20,
     desktop: 24,
@@ -61,36 +71,31 @@ const PinterestGallery = React.memo(() => {
   return (
     <div style={{
       width: '100%',
-      maxWidth: '1800px',
+      maxWidth: isMobile ? 'none' : '1800px',
       margin: '0 auto',
       padding: `0 ${containerPadding}px`
     }}>
-      <motion.div
-        className="pinterest-gallery"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        style={{
-          columnCount: columns,
-          columnGap: `${gap}px`,
-          columnFill: 'balance'
-        }}
-      >
-        {galleryItems.map((item, index) => {
-          // יצירת גדלים לא אחידים כמו Pinterest - רק במובייל
-          const isMobile = window.innerWidth <= 768;
-          const heightVariations = isMobile ? 
-            [180, 220, 260, 300, 240, 280, 200, 250] : 
-            [200, 250, 300, 350, 280, 320, 240, 290, 260, 310];
-          const randomHeight = heightVariations[index % heightVariations.length];
-          
-          return (
+      {isMobile ? (
+        // Mobile: Grid layout for exact 2 columns
+        <motion.div
+          className="pinterest-gallery"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: `${gap}px`,
+            width: '100%'
+          }}
+        >
+          {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
               className="gallery-item"
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 transition: { duration: 0.3 }
               }}
@@ -98,16 +103,8 @@ const PinterestGallery = React.memo(() => {
               data-aos-delay={index * 50}
               data-aos-duration="600"
               style={{
-                breakInside: 'avoid',
-                marginBottom: `${gap}px`,
                 cursor: 'pointer',
-                borderRadius: getResponsiveValue({
-                  mobile: '16px',
-                  tablet: '18px',
-                  laptop: '20px',
-                  desktop: '22px',
-                  large: '24px'
-                }),
+                borderRadius: '16px',
                 overflow: 'hidden',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                 transition: 'all 0.4s ease',
@@ -115,33 +112,108 @@ const PinterestGallery = React.memo(() => {
                 backdropFilter: 'blur(15px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 position: 'relative',
-                height: isMobile ? `${randomHeight}px` : 'auto',
+                aspectRatio: '1 / 1',
                 width: '100%'
               }}
             >
-            <img
-              src={item.img}
-              alt={`Gallery item ${index + 1}`}
-              style={{
-                width: '100%',
-                height: isMobile ? '100%' : 'auto',
-                objectFit: isMobile ? 'cover' : 'contain',
-                objectPosition: 'center',
-                display: 'block',
-                borderRadius: 'inherit',
-                transition: 'transform 0.4s ease'
-              }}
-              onLoad={(e) => {
-                e.target.style.opacity = '1';
-              }}
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-          </motion.div>
-          );
-        })}
-      </motion.div>
+              <img
+                src={item.img}
+                alt={`Gallery item ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                  borderRadius: 'inherit',
+                  transition: 'transform 0.4s ease'
+                }}
+                onLoad={(e) => {
+                  e.target.style.opacity = '1';
+                }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        // Desktop: Column layout
+        <motion.div
+          className="pinterest-gallery"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          style={{
+            columnCount: columns,
+            columnGap: `${gap}px`,
+            columnFill: 'balance'
+          }}
+        >
+          {galleryItems.map((item, index) => {
+            const heightVariations = [200, 250, 300, 350, 280, 320, 240, 290, 260, 310];
+            const randomHeight = heightVariations[index % heightVariations.length];
+
+            return (
+              <motion.div
+                key={item.id}
+                className="gallery-item"
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.3 }
+                }}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                data-aos-duration="600"
+                style={{
+                  breakInside: 'avoid',
+                  marginBottom: `${gap}px`,
+                  cursor: 'pointer',
+                  borderRadius: getResponsiveValue({
+                    mobile: '16px',
+                    tablet: '18px',
+                    laptop: '20px',
+                    desktop: '22px',
+                    large: '24px'
+                  }),
+                  overflow: 'hidden',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                  transition: 'all 0.4s ease',
+                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(15px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  position: 'relative',
+                  height: 'auto',
+                  width: '100%'
+                }}
+              >
+                <img
+                  src={item.img}
+                  alt={`Gallery item ${index + 1}`}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    display: 'block',
+                    borderRadius: 'inherit',
+                    transition: 'transform 0.4s ease'
+                  }}
+                  onLoad={(e) => {
+                    e.target.style.opacity = '1';
+                  }}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      )}
     </div>
   );
 });

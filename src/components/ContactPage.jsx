@@ -85,7 +85,7 @@ const ContactPage = () => {
           min-height: 100vh;
           width: 100%;
           direction: rtl;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           background: #0D0D0D url('https://res.cloudinary.com/doteohz34/image/upload/v1760636993/CONTACKT_lvps7l.png') center/cover no-repeat fixed;
           position: relative;
           overflow-x: hidden;
@@ -150,7 +150,7 @@ const ContactPage = () => {
         .main-title {
           font-size: 4.5rem;
           font-weight: 700;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -162,7 +162,7 @@ const ContactPage = () => {
         .subtitle {
           font-size: 1.4rem;
           color: #B3B3B3;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           max-width: 600px;
           margin: 0 auto;
           line-height: 1.5;
@@ -202,7 +202,7 @@ const ContactPage = () => {
         }
 
         .form__field {
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           width: 100%;
           border: none;
           border-bottom: 2px solid #9b9b9b;
@@ -235,7 +235,7 @@ const ContactPage = () => {
           font-size: 17px;
           color: #9b9b9b;
           pointer-events: none;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
         }
 
         .form__field:focus {
@@ -272,7 +272,7 @@ const ContactPage = () => {
           cursor: pointer;
           transition: all 450ms ease-in-out;
           margin: 10px auto 5px auto; /* הקטנת המרווחים */
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           
           /* אפקט זכוכית */
           background: rgba(255, 255, 255, 0.1);
@@ -334,7 +334,7 @@ const ContactPage = () => {
           padding: 20px 30px;
           border-radius: 16px;
           text-align: center;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           font-weight: 500;
           max-width: 400px;
           
@@ -378,7 +378,7 @@ const ContactPage = () => {
         .social-title {
           font-size: 1.2rem;
           color: #B3B3B3;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           margin-bottom: 15px; /* הגדלת המרווח מהכותרת לאיקונים */
           font-weight: 500;
         }
@@ -407,7 +407,7 @@ const ContactPage = () => {
           visibility: hidden;
           font-size: 14px;
           transition: all 0.3s ease;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           white-space: nowrap;
         }
 

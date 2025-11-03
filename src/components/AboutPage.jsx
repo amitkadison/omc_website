@@ -81,7 +81,7 @@ const AboutPage = () => {
           min-height: 100vh;
           width: 100%;
           direction: rtl;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           background: #0A0A0A;
           position: relative;
           overflow-x: hidden;
@@ -104,7 +104,7 @@ const AboutPage = () => {
         .vision-text {
           font-size: 80px;
           font-weight: 700;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -215,7 +215,7 @@ const AboutPage = () => {
         .our-story-title {
           font-size: 52px;
           font-weight: 600;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -246,7 +246,7 @@ const AboutPage = () => {
           font-size: 22px;
           line-height: 1.7;
           color: #CCCCCC;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-weight: 400;
           letter-spacing: -0.2px;
           position: relative;
@@ -549,7 +549,7 @@ const AboutPage = () => {
           font-weight: 600;
           letter-spacing: -0.5px;
           margin-bottom: 40px;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           line-height: 1.05;
           white-space: nowrap;
         }
@@ -577,7 +577,7 @@ const AboutPage = () => {
           color: #CCCCCC;
           line-height: 1.6;
           margin-bottom: 20px;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-weight: 400;
           letter-spacing: -0.1px;
         }
@@ -637,7 +637,7 @@ const AboutPage = () => {
         .experience-title {
           font-size: 2.5rem;
           font-weight: 700;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           background: linear-gradient(135deg, #F7C873 0%, #C9A14B 50%, #A67C52 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -654,7 +654,7 @@ const AboutPage = () => {
           font-size: 20px;
           line-height: 1.5;
           color: #CCCCCC;
-          font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-weight: 400;
           letter-spacing: -0.1px;
           position: relative;
@@ -1061,7 +1061,7 @@ const AboutPage = () => {
                 <div className="our-story-star">✦</div>
                 <div className="our-story-star">✦</div>
               </div>
-              ב-<span style={{ fontFamily: "'Inter', sans-serif", direction: "ltr", display: "inline-block" }}>OMC</span> אנחנו מאמינים שתשוקה וכישרון הם המפתח להצלחה. 
+              ב-<span style={{ fontFamily: "'Varela Round', sans-serif", direction: "ltr", display: "inline-block" }}>OMC</span> אנחנו מאמינים שתשוקה וכישרון הם המפתח להצלחה. 
               הצוות שלנו אנשים טובים שאוהבים את מה שהם עושים מביא איתו אנרגיה, חיוך והמון יצירתיות. 
               בין אם זו חתונת השנה או Happy Hour בחברה שלכם אנחנו יודעים לעשות דבר אחד מצוין:
               <br />

@@ -26,7 +26,7 @@ function autoBind(instance) {
   });
 }
 
-function createTextTexture(gl, text, font = "bold 30px monospace", color = "black") {
+function createTextTexture(gl, text, font = "bold 30px 'Varela Round', sans-serif", color = "black") {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   context.font = font;
@@ -311,7 +311,7 @@ class Media {
 // ========================================================================================
 class App {
   constructor(container, {
-    items, bend, textColor = "#ffffff", font = "bold 30px Figtree",
+    items, bend, textColor = "#ffffff", font = "bold 30px 'Varela Round', sans-serif",
     scrollSpeed = 2, scrollEase = 0.05
   } = {}) {
     document.documentElement.classList.remove("no-js");
@@ -547,7 +547,7 @@ export default function CircularGallery({
   items,
   bend = 3,
   textColor = "#ffffff",
-  font = "bold 30px Figtree",
+  font = "bold 30px 'Varela Round', sans-serif",
   scrollSpeed = 2,
   scrollEase = 0.05,
 }) {

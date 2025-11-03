@@ -222,7 +222,7 @@ const ServicesPage = () => {
         .main-title {
           font-size: clamp(2.5rem, 6vw, 5rem);
           font-weight: 700;
-          font-family: 'Noto Sans Hebrew', sans-serif;
+          font-family: 'Varela Round', sans-serif;
           background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;

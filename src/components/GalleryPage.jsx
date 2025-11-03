@@ -108,7 +108,7 @@ const GalleryPage = () => {
           <h1 className="gallery-title" style={{
             fontSize: '80px',
             fontWeight: '700',
-            fontFamily: "'Noto Sans Hebrew', sans-serif",
+            fontFamily: "'Varela Round', sans-serif",
             background: 'linear-gradient(180deg, #ffffff 0%, #999999 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',

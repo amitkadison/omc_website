@@ -1659,7 +1659,7 @@ const CTASection = React.memo(React.forwardRef((_props, ref) => {
 
         .submit-btn {
           padding: 18px 36px;
-          background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+          background: linear-gradient(135deg, #C9A14B 0%, #A67C52 100%);
           border: none;
           border-radius: 12px;
           color: white;
@@ -1671,15 +1671,15 @@ const CTASection = React.memo(React.forwardRef((_props, ref) => {
           font-family: 'Varela Round', sans-serif;
           font-weight: 700;
           letter-spacing: -0.1px;
-          box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+          box-shadow: 0 4px 16px rgba(201, 161, 75, 0.35);
           position: relative;
           overflow: hidden;
         }
 
         .submit-btn:hover {
-          background: linear-gradient(135deg, #0088FF 0%, #0066E6 100%);
+          background: linear-gradient(135deg, #D4AF5E 0%, #B88A61 100%);
           transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 8px 24px rgba(0, 122, 255, 0.4);
+          box-shadow: 0 8px 24px rgba(201, 161, 75, 0.45);
         }
 
         .submit-btn:active {

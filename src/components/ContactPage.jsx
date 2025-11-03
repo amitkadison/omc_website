@@ -292,15 +292,15 @@ const ContactPage = () => {
         }
 
         .btn:hover {
-          background: linear-gradient(0deg, #00E5FF, #00BCD4);
-          border: 1px solid rgba(255, 255, 255, 0.4);
+          background: linear-gradient(135deg, #C9A14B 0%, #A67C52 100%);
+          border: 1px solid rgba(201, 161, 75, 0.4);
           backdrop-filter: blur(0px);
           -webkit-backdrop-filter: blur(0px);
-          box-shadow: 
+          box-shadow:
             inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
             inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
-            0px 0px 0px 4px rgba(255, 255, 255, 0.2),
-            0px 0px 180px 0px #00E5FF;
+            0px 0px 0px 4px rgba(201, 161, 75, 0.2),
+            0px 0px 180px 0px #C9A14B;
           transform: translateY(-2px);
         }
 

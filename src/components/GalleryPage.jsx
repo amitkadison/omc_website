@@ -89,7 +89,7 @@ const GalleryPage = () => {
       <div style={{
         position: 'relative',
         zIndex: 10,
-        padding: '4rem 0',
+        padding: '6rem 0 4rem 0',
         width: '100%',
         maxWidth: '100%',
         margin: '0 auto'

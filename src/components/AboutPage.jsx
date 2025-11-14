@@ -96,7 +96,7 @@ const AboutPage = () => {
 
         /* פסקת החזון */
         .vision-section {
-          padding: 120px 40px 60px;
+          padding: 150px 40px 60px;
           text-align: center;
           position: relative;
         }

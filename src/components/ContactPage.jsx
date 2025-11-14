@@ -93,7 +93,7 @@ const ContactPage = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 100px 20px;
+          padding: 130px 20px 100px 20px;
         }
 
         /* שכבת כיסוי כהה מעל תמונת הרקע */

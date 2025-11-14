@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,12 +43,12 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
 
   // פריטי הניווט
   const navItems = [
-    { id: 'home', label: 'בית' },
-    { id: 'services', label: 'שירותים' },
-    { id: 'about', label: 'אודותינו' },
-    { id: 'gallery', label: 'גלריה' },
-    { id: 'blog', label: 'בלוג' },
-    { id: 'contact', label: 'צור קשר' }
+    { id: 'home', label: 'בית', path: '/' },
+    { id: 'services', label: 'שירותים', path: '/services' },
+    { id: 'about', label: 'אודותינו', path: '/about' },
+    { id: 'gallery', label: 'גלריה', path: '/gallery' },
+    { id: 'blog', label: 'בלוג', path: '/blog' },
+    { id: 'contact', label: 'צור קשר', path: '/contact' }
   ];
 
   const handleNavClick = (itemId) => {
@@ -362,12 +363,13 @@ const MobileHamburgerMenu = ({ currentPage = 'home', onNavigate }) => {
             <ul className="menu-items">
               {navItems.map((item) => (
                 <li key={item.id} className="menu-item">
-                  <div
+                  <Link
+                    to={item.path}
                     className={`menu-link ${currentPage === item.id ? 'active' : ''}`}
                     onClick={() => handleNavClick(item.id)}
                   >
                     <span className="menu-text">{item.label}</span>
-                  </div>
+                  </Link>
                 </li>
               ))}
             </ul>

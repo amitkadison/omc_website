@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -6,14 +7,13 @@ import './App.css';
 import './scrollbar-fix.css';
 
 function App() {
-  const [currentLocation, setCurrentLocation] = useState(window.location);
   const [isParallaxPage, setIsParallaxPage] = useState(false);
 
   useEffect(() => {
     // זיהוי דפים שמשתמשים בפרלקס (Framer Motion)
     const parallaxPages = ['/services', '/services-page', '/parallax'];
-    const currentPath = currentLocation?.pathname || '';
-    const isCurrentlyParallaxPage = parallaxPages.some(page => 
+    const currentPath = window.location?.pathname || '';
+    const isCurrentlyParallaxPage = parallaxPages.some(page =>
       currentPath.includes(page)
     );
     
@@ -69,7 +69,7 @@ function App() {
       clearTimeout(timer);
       window.removeEventListener('resize', handleResize);
     };
-  }, [currentLocation]);
+  }, []);
 
   // הוספת קלאס לbody בהתאם לסוג הדף
   useEffect(() => {
@@ -93,7 +93,11 @@ function App() {
     };
   }, [isParallaxPage]);
 
-  return <AppRouter />;
+  return (
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  );
 }
 
 export default App;

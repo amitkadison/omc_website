@@ -96,7 +96,7 @@ const AboutPage = () => {
 
         /* פסקת החזון */
         .vision-section {
-          padding: 150px 40px 60px;
+          padding: 180px 40px 60px;
           text-align: center;
           position: relative;
         }
@@ -114,6 +114,22 @@ const AboutPage = () => {
           margin: 0 auto;
           text-align: center;
           direction: rtl;
+          position: relative;
+          z-index: 1;
+        }
+
+        .vision-text::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 500px;
+          height: 300px;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%);
+          filter: blur(60px);
+          z-index: -1;
+          pointer-events: none;
         }
 
         .vision-line {
@@ -223,6 +239,22 @@ const AboutPage = () => {
           line-height: 1.2;
           margin: 0 auto 40px auto;
           letter-spacing: -0.5px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .our-story-title::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          height: 250px;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%);
+          filter: blur(60px);
+          z-index: -1;
+          pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -552,6 +584,22 @@ const AboutPage = () => {
           font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           line-height: 1.05;
           white-space: nowrap;
+          position: relative;
+          z-index: 2;
+        }
+
+        .omer-title::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 450px;
+          height: 280px;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%);
+          filter: blur(60px);
+          z-index: -1;
+          pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -646,6 +694,22 @@ const AboutPage = () => {
           margin-bottom: 30px;
           letter-spacing: -0.5px;
           line-height: 1.2;
+          position: relative;
+          z-index: 2;
+        }
+
+        .experience-title::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          height: 250px;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%);
+          filter: blur(60px);
+          z-index: -1;
+          pointer-events: none;
         }
 
         .experience-content {

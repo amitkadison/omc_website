@@ -141,8 +141,8 @@ const OMCSmartNavigationWithMobile = ({ currentPage = 'home', onNavigate }) => {
       }
 
       .omc-logo {
-        width: 80px !important;
-        height: 80px !important;
+        width: 120px !important;
+        height: 120px !important;
         object-fit: contain !important;
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1)) !important;
         transition: all 0.3s ease !important;
@@ -245,8 +245,8 @@ const OMCSmartNavigationWithMobile = ({ currentPage = 'home', onNavigate }) => {
         }
 
         .omc-logo {
-          width: 48px !important;
-          height: 48px !important;
+          width: 90px !important;
+          height: 90px !important;
         }
       }
 

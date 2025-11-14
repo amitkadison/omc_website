@@ -1197,19 +1197,24 @@ const OurServicesSection = React.memo(() => {
 
   const servicesData = useMemo(() => [
     {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/2024-09-06GAVRIEL-126_m0bybb.jpg",
+      image: "https://res.cloudinary.com/doteohz34/image/upload/v1763114463/WORKING_ib7y7q.png",
       text: "אירועים פרטיים",
       description: "בין בר מצווה לחתונת זהב - נגיע לכל מקום ונאתגר אתכם :)"
     },
     {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/DSC03566_trxtjs.jpg",
+      image: "https://res.cloudinary.com/doteohz34/image/upload/v1763114464/bride-groom-are-drinking-champagne-with-best-friends-outdoors-with-sincere-smiles-monochrome-view_dcb7hm.jpg",
       text: "חתונות",
       description: "משקה שהאורח לא ישכח - הקיק של OMC בטעמים ובמקצועיות"
     },
     {
-      image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/forobs30u30_csnpjj.jpg",
+      image: "https://res.cloudinary.com/doteohz34/image/upload/v1763114526/WORK_f10be9.png",
       text: "אירועי חברה",
       description: "ליצור חיבור אמיתי בין אנשים ולשבור שגרה - חוויה בלתי נשכחת"
+    },
+    {
+      image: "https://res.cloudinary.com/doteohz34/image/upload/v1763115199/busienss_a8xsqe.png",
+      text: "אירועים עסקיים",
+      description: "יצירת רושם מקצועי וייחודי - האירוע העסקי שלכם יהפוך לחוויה מרשימה"
     },
     {
       image: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/barista-putting-alcohol-into-cocktail-glass-with-syrup-ice-cubes_thuy44.jpg",
@@ -1481,11 +1486,11 @@ const OurServicesSection = React.memo(() => {
             })}
             textColor="#FFFFFF"
             font={getResponsiveValue({
-              mobile: "700 18px Varela Round, sans-serif",
-              tablet: "700 20px Varela Round, sans-serif",
-              laptop: "700 22px Varela Round, sans-serif",
-              desktop: "700 24px Varela Round, sans-serif",
-              large: "700 26px Varela Round, sans-serif"
+              mobile: "800 22px Varela Round, sans-serif",
+              tablet: "800 24px Varela Round, sans-serif",
+              laptop: "800 28px Varela Round, sans-serif",
+              desktop: "800 32px Varela Round, sans-serif",
+              large: "800 36px Varela Round, sans-serif"
             })}
             scrollSpeed={3}
             scrollEase={0.08}

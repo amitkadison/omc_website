@@ -89,7 +89,7 @@ const GalleryPage = () => {
       <div style={{
         position: 'relative',
         zIndex: 10,
-        padding: '6rem 0 4rem 0',
+        padding: '8rem 0 4rem 0',
         width: '100%',
         maxWidth: '100%',
         margin: '0 auto'
@@ -102,9 +102,24 @@ const GalleryPage = () => {
           style={{
             textAlign: 'center',
             marginBottom: '3rem',
-            padding: '0 2rem'
+            padding: '0 2rem',
+            position: 'relative'
           }}
         >
+          {/* Radial gradient background */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '500px',
+            height: '300px',
+            background: 'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%)',
+            filter: 'blur(60px)',
+            zIndex: -1,
+            pointerEvents: 'none'
+          }} />
+
           <h1 className="gallery-title" style={{
             fontSize: '80px',
             fontWeight: '700',
@@ -117,7 +132,9 @@ const GalleryPage = () => {
             maxWidth: '1200px',
             margin: '0 auto',
             textAlign: 'center',
-            direction: 'rtl'
+            direction: 'rtl',
+            position: 'relative',
+            zIndex: 1
           }}>
             גלריית עבודות
           </h1>

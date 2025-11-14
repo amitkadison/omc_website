@@ -83,13 +83,34 @@ class Title {
         void main() {
           vec4 color = texture2D(tMap, vUv);
           if (color.a < 0.1) discard;
-          
-          vec2 shadowOffset = vec2(0.02, -0.02);
-          vec4 shadowColor = texture2D(tMap, vUv + shadowOffset);
-          shadowColor.rgb = vec3(0.0, 0.0, 0.0);
-          shadowColor.a *= 0.5;
-          
-          color = mix(shadowColor, color, color.a);
+
+          // Enhanced shadow with multiple layers
+          vec2 shadowOffset1 = vec2(0.003, -0.003);
+          vec2 shadowOffset2 = vec2(0.006, -0.006);
+          vec2 shadowOffset3 = vec2(0.009, -0.009);
+
+          vec4 shadow1 = texture2D(tMap, vUv + shadowOffset1);
+          vec4 shadow2 = texture2D(tMap, vUv + shadowOffset2);
+          vec4 shadow3 = texture2D(tMap, vUv + shadowOffset3);
+
+          shadow1.rgb = vec3(0.0);
+          shadow2.rgb = vec3(0.0);
+          shadow3.rgb = vec3(0.0);
+
+          shadow1.a *= 0.8;
+          shadow2.a *= 0.6;
+          shadow3.a *= 0.4;
+
+          // Combine shadows
+          vec4 combinedShadow = shadow3;
+          combinedShadow = mix(combinedShadow, shadow2, shadow2.a);
+          combinedShadow = mix(combinedShadow, shadow1, shadow1.a);
+
+          // Add subtle glow to text
+          color.rgb = color.rgb * 1.15;
+
+          // Final composition
+          color = mix(combinedShadow, color, color.a);
           gl_FragColor = color;
         }
       `,

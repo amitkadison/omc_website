@@ -93,7 +93,7 @@ const ContactPage = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 130px 20px 100px 20px;
+          padding: 160px 20px 100px 20px;
         }
 
         /* שכבת כיסוי כהה מעל תמונת הרקע */
@@ -157,6 +157,22 @@ const ContactPage = () => {
           background-clip: text;
           line-height: 1.2;
           margin-bottom: 20px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .main-title::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 500px;
+          height: 300px;
+          background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, rgba(109, 40, 217, 0.05) 70%, transparent 100%);
+          filter: blur(60px);
+          z-index: -1;
+          pointer-events: none;
         }
 
         .subtitle {

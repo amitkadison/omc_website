@@ -8,7 +8,6 @@ import BLOG from './BLOG';
 import ArticlePage from './ArticlePage';
 import ContactPage from './ContactPage';
 import WhatsAppButton from './WhatsAppButton';
-import AccessibilityWidget from './AccessibilityWidget';
 import OMCSmartNavigationWithMobile from './OMCSmartNavigation';
 import MobileHamburgerMenu from './MobileHamburgerMenu';
 import DangerousMode from './DangerousMode';
@@ -197,9 +196,6 @@ const AppRouter = () => {
 
         {/* כפתור ווטצאפ קבוע */}
         <WhatsAppButton />
-
-        {/* כפתור נגישות קבוע */}
-        <AccessibilityWidget />
 
         {/* Dangerous Mode - Development Tool */}
         <DangerousMode />

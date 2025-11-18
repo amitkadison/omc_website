@@ -3,7 +3,7 @@
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .accessibility-button {
@@ -123,7 +123,7 @@ body.underline-links a {
   .accessibility-widget {
     bottom: 15px;
     right: 15px;
-    margin-right: 8px;
+    margin-right: 0px;
   }
   
   .accessibility-button {

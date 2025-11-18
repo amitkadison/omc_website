@@ -1486,11 +1486,11 @@ const OurServicesSection = React.memo(() => {
             })}
             textColor="#FFFFFF"
             font={getResponsiveValue({
-              mobile: "900 22px Varela Round, sans-serif",
-              tablet: "900 24px Varela Round, sans-serif",
-              laptop: "900 28px Varela Round, sans-serif",
-              desktop: "900 32px Varela Round, sans-serif",
-              large: "900 36px Varela Round, sans-serif"
+              mobile: "900 22px Heebo, sans-serif",
+              tablet: "900 24px Heebo, sans-serif",
+              laptop: "900 28px Heebo, sans-serif",
+              desktop: "900 32px Heebo, sans-serif",
+              large: "900 36px Heebo, sans-serif"
             })}
             scrollSpeed={3}
             scrollEase={0.08}

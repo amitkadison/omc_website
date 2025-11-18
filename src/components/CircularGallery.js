@@ -26,7 +26,7 @@ function autoBind(instance) {
   });
 }
 
-function createTextTexture(gl, text, font = "bold 30px 'Varela Round', sans-serif", color = "black") {
+function createTextTexture(gl, text, font = "900 30px 'Varela Round', sans-serif", color = "black") {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   context.font = font;
@@ -50,7 +50,7 @@ function createTextTexture(gl, text, font = "bold 30px 'Varela Round', sans-seri
 // TITLE CLASS - Handles text labels below cards
 // ========================================================================================
 class Title {
-  constructor({ gl, plane, renderer, text, textColor = "#545050", font = "30px sans-serif" }) {
+  constructor({ gl, plane, renderer, text, textColor = "#545050", font = "900 30px 'Varela Round', sans-serif" }) {
     autoBind(this);
     this.gl = gl;
     this.plane = plane;
@@ -257,7 +257,7 @@ class Media {
       renderer: this.renderer,
       text: this.text,
       textColor: this.textColor,
-      fontFamily: this.font,
+      font: this.font,
     });
   }
   
@@ -332,7 +332,7 @@ class Media {
 // ========================================================================================
 class App {
   constructor(container, {
-    items, bend, textColor = "#ffffff", font = "bold 30px 'Varela Round', sans-serif",
+    items, bend, textColor = "#ffffff", font = "900 30px 'Varela Round', sans-serif",
     scrollSpeed = 2, scrollEase = 0.05
   } = {}) {
     document.documentElement.classList.remove("no-js");
@@ -568,7 +568,7 @@ export default function CircularGallery({
   items,
   bend = 3,
   textColor = "#ffffff",
-  font = "bold 30px 'Varela Round', sans-serif",
+  font = "900 30px 'Varela Round', sans-serif",
   scrollSpeed = 2,
   scrollEase = 0.05,
 }) {

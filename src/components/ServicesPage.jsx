@@ -194,7 +194,7 @@ const ServicesPage = () => {
         /* Header Section */
         .page-header {
           text-align: center;
-          padding: clamp(80px, 15vh, 120px) 20px clamp(60px, 10vh, 80px);
+          padding: clamp(120px, 20vh, 180px) 20px clamp(60px, 10vh, 80px);
           position: relative;
           z-index: 2;
         }

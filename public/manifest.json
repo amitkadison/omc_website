@@ -1,25 +1,37 @@
 {
-  "short_name": "O.M.C",
-  "name": "O.M.C Mixology Art - בר קוקטיילים מולקולרי",
+  "short_name": "OMC",
+  "name": "O.M.C Mixology Art - בר קוקטיילים מולקולרי לאירועים",
+  "description": "בר קוקטיילים מקצועי ושירותי מיקסולוגיה לאירועים",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/favicon.ico",
       "sizes": "32x32",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "/logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "theme_color": "#1C1C1C",
-  "background_color": "#0D0D0D"
+  "background_color": "#0D0D0D",
+  "lang": "he",
+  "dir": "rtl"
 }

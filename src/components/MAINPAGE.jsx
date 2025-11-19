@@ -1378,7 +1378,7 @@ const OurServicesSection = React.memo(() => {
                 }}>
                   <h3 style={{
                     fontSize: '1.4rem',
-                    fontWeight: '900',
+                    fontWeight: '700',
                     color: '#FFFFFF',
                     fontFamily: FONTS.secondary,
                     margin: 0,
@@ -1486,11 +1486,11 @@ const OurServicesSection = React.memo(() => {
             })}
             textColor="#FFFFFF"
             font={getResponsiveValue({
-              mobile: "900 22px Heebo, sans-serif",
-              tablet: "900 24px Heebo, sans-serif",
-              laptop: "900 28px Heebo, sans-serif",
-              desktop: "900 32px Heebo, sans-serif",
-              large: "900 36px Heebo, sans-serif"
+              mobile: "800 22px Varela Round, sans-serif",
+              tablet: "800 24px Varela Round, sans-serif",
+              laptop: "800 28px Varela Round, sans-serif",
+              desktop: "800 32px Varela Round, sans-serif",
+              large: "800 36px Varela Round, sans-serif"
             })}
             scrollSpeed={3}
             scrollEase={0.08}

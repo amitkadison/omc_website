@@ -835,7 +835,7 @@ const MobileHeaderSection = React.memo(() => {
       transition={{ duration: 0.8, delay: 0.2 }}
       style={{
         width: '100%',
-        padding: '30px 20px 35px',
+        padding: '40px 20px 45px',
         textAlign: 'center',
         position: 'relative'
       }}
@@ -846,9 +846,9 @@ const MobileHeaderSection = React.memo(() => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '250px',
-        height: '150px',
-        background: 'radial-gradient(ellipse at center, rgba(201, 161, 75, 0.1) 0%, transparent 70%)',
+        width: '320px',
+        height: '200px',
+        background: 'radial-gradient(ellipse at center, rgba(201, 161, 75, 0.12) 0%, transparent 70%)',
         filter: 'blur(50px)',
         zIndex: 0,
         pointerEvents: 'none'
@@ -864,7 +864,7 @@ const MobileHeaderSection = React.memo(() => {
           display: 'flex',
           justifyContent: 'center',
           gap: '8px',
-          marginBottom: '16px',
+          marginBottom: '20px',
           position: 'relative',
           zIndex: 1
         }}
@@ -899,47 +899,62 @@ const MobileHeaderSection = React.memo(() => {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.5 }}
         style={{
-          fontSize: '22px',
-          fontWeight: '300',
-          lineHeight: '1.4',
-          color: '#FFFFFF',
-          fontFamily: "'Noto Sans Hebrew', sans-serif",
           position: 'relative',
-          zIndex: 1,
-          textShadow: '0 2px 15px rgba(0, 0, 0, 0.3)'
+          zIndex: 1
         }}
       >
+        {/* כותרת ראשית */}
         <span style={{
           background: 'linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           display: 'block',
-          marginBottom: '4px'
+          marginBottom: '6px',
+          fontSize: '22px',
+          fontWeight: '400',
+          lineHeight: '1.3',
+          fontFamily: 'Varela Round, sans-serif',
+          textShadow: '0 2px 15px rgba(0, 0, 0, 0.3)'
         }}>
           מה הופך אותנו
         </span>
+
+        {/* שורה עם גרדיאנט זהב */}
         <span style={{
           background: 'linear-gradient(135deg, #C9A14B 0%, #D4AF5E 50%, #C9A14B 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           display: 'block',
-          fontWeight: '400',
-          fontSize: '24px'
+          fontWeight: '700',
+          fontSize: '24px',
+          lineHeight: '1.3',
+          fontFamily: 'Varela Round, sans-serif',
+          marginBottom: '25px',
+          textShadow: '0 2px 15px rgba(201, 161, 75, 0.3)'
         }}>
-          לשותף המועדף
+          לבחירה הראשונה של המפיקים הכי גדולים בארץ
         </span>
+
+        {/* משפט אנחנו רוקחים */}
         <span style={{
-          background: 'linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 100%)',
+          background: 'linear-gradient(180deg, #FFFFFF 0%, #CCCCCC 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           display: 'block',
-          fontSize: '20px',
-          marginTop: '2px'
+          fontSize: '28px',
+          fontWeight: '700',
+          lineHeight: '1.25',
+          fontFamily: 'Varela Round, sans-serif',
+          marginTop: '10px',
+          letterSpacing: '-0.02em',
+          textShadow: '0 2px 15px rgba(0, 0, 0, 0.3)'
         }}>
-          על החברות והמפיקים הגדולים בישראל
+          אנחנו רוקחים את הידע והדמיון
+          <br />
+          לכוס אחת מושלמת
         </span>
       </motion.div>
 
@@ -950,10 +965,10 @@ const MobileHeaderSection = React.memo(() => {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.7 }}
         style={{
-          width: '50px',
-          height: '1.5px',
+          width: '60px',
+          height: '2px',
           background: `linear-gradient(90deg, transparent 0%, ${COLORS.primary} 50%, transparent 100%)`,
-          margin: '20px auto 0',
+          margin: '25px auto 0',
           position: 'relative',
           zIndex: 1
         }}
@@ -979,22 +994,23 @@ const HebrewTextSection = React.memo(() => {
     <section style={{
       width: '100%',
       padding: getResponsiveValue({
-        mobile: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
-        tablet: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
-        laptop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
-        desktop: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`,
-        large: `${getElementSpacing('xsmall')} ${getElementSpacing('medium')}`
+        mobile: `${getElementSpacing('medium')} ${getElementSpacing('medium')}`,
+        tablet: `${getElementSpacing('medium')} ${getElementSpacing('medium')}`,
+        laptop: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+        desktop: `${getElementSpacing('small')} ${getElementSpacing('medium')}`,
+        large: `${getElementSpacing('small')} ${getElementSpacing('medium')}`
       }),
       position: 'relative',
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       minHeight: getResponsiveValue({
-        mobile: '40vh',
-        tablet: '40vh',
-        laptop: '30vh',
-        desktop: '20vh',
-        large: '20vh'
+        mobile: '50vh',
+        tablet: '50vh',
+        laptop: '45vh',
+        desktop: '40vh',
+        large: '40vh'
       })
     }}>
       <style>{`
@@ -1012,16 +1028,45 @@ const HebrewTextSection = React.memo(() => {
           letter-spacing: inherit !important;
         }
 
+        .split-word {
+          display: inline-block;
+          will-change: transform, opacity;
+          background: inherit !important;
+          -webkit-background-clip: inherit !important;
+          -webkit-text-fill-color: inherit !important;
+          background-clip: inherit !important;
+          font-size: inherit !important;
+          font-family: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
+          margin: 0 0.2em;
+        }
+
         .hebrew-text-split {
-          font-size: clamp(1.6rem, 3.2vw, 2.8rem) !important;
-          font-weight: 700 !important;
-          font-family: 'Varela Round', sans-serif !important;
-          background: linear-gradient(135deg, #8B7355 0%, #A67C52 25%, #CD853F 50%, #A67C52 75%, #8B7355 100%) !important;
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          font-family: inherit !important;
+          background: linear-gradient(135deg, #C9A14B 0%, #D4AF5E 50%, #C9A14B 100%) !important;
           -webkit-background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
           background-clip: text !important;
-          line-height: 1.4 !important;
-          letter-spacing: -0.02em !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
+          white-space: normal !important;
+          word-wrap: break-word !important;
+        }
+
+        .vision-text-split {
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          font-family: inherit !important;
+          background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
           white-space: normal !important;
           word-wrap: break-word !important;
         }
@@ -1091,97 +1136,108 @@ const HebrewTextSection = React.memo(() => {
         position: 'relative',
         zIndex: 2,
         textAlign: 'center',
-        direction: 'rtl'
+        direction: 'rtl',
+        width: '100%'
       }}>
-        <div style={{ marginBottom: getElementSpacing('small') }}>
-          <motion.div
-            style={{
-              fontSize: getResponsiveValue({
-                mobile: '1.2rem',
-                tablet: '1.4rem',
-                laptop: '1.6rem',
-                desktop: '1.8rem',
-                large: '2.0rem'
-              }),
-              fontWeight: '700',
-              fontFamily: FONTS.secondary,
-              ...sharedStyles.gradientText,
-              lineHeight: 1.4,
-              textAlign: 'center',
-              direction: 'rtl',
-              letterSpacing: '-0.02em'
-            }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-          </motion.div>
-        </div>
-
-        <div style={{ 
-          marginTop: getElementSpacing('small'),
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%'
-        }}>
-          <div style={{
-            direction: 'rtl',
-            textAlign: 'center',
+        {/* כותרת ראשית */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          style={{
             fontSize: getResponsiveValue({
-              mobile: '1.2rem',
-              tablet: '1.4rem',
-              laptop: '1.6rem',
-              desktop: '1.8rem',
-              large: '2.0rem'
+              mobile: '2.2rem',
+              tablet: '2.6rem',
+              laptop: '3rem',
+              desktop: '3.4rem',
+              large: '3.8rem'
             }),
-            fontWeight: '700',
+            fontWeight: '400',
             fontFamily: FONTS.secondary,
             ...sharedStyles.gradientText,
             lineHeight: 1.3,
-            letterSpacing: '-0.01em',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
-            <h1 style={{ margin: 0, padding: 0 }}>
-              מה הופך אותנו
-              <div style={{ 
-                marginRight: '30px',
-                marginTop: '6px'
-              }}>
-                <SplitText
-                  text="לשותף המועדף על החברות והמפיקים הגדולים בישראל"
-                  className="hebrew-text-split"
-                  delay={30}
-                  duration={0.5}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 50, rotationX: -90 }}
-                  to={{ opacity: 1, y: 0, rotationX: 0 }}
-                  threshold={0.1}
-                  rootMargin="150px"
-                  textAlign="center"
-                  tag="div"
-                  onLetterAnimationComplete={handleAnimationComplete}
-                  style={{
-                    fontSize: 'inherit',
-                    fontWeight: 'inherit',
-                    fontFamily: 'inherit',
-                    background: 'linear-gradient(135deg, #8B7355 0%, #A67C52 25%, #CD853F 50%, #A67C52 75%, #8B7355 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    lineHeight: 'inherit',
-                    letterSpacing: 'inherit',
-                    direction: 'rtl',
-                    textAlign: 'center'
-                  }}
-                />
-              </div>
-            </h1>
-          </div>
+            textAlign: 'center',
+            direction: 'rtl',
+            letterSpacing: '-0.02em',
+            marginBottom: getElementSpacing('xsmall')
+          }}
+        >
+          מה הופך אותנו
+        </motion.div>
+
+        {/* שורה עם גרדיאנט זהב - ללא אנימציה */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          style={{
+            fontSize: getResponsiveValue({
+              mobile: '2.2rem',
+              tablet: '2.6rem',
+              laptop: '3rem',
+              desktop: '3.4rem',
+              large: '3.8rem'
+            }),
+            fontWeight: '700',
+            fontFamily: FONTS.secondary,
+            background: 'linear-gradient(135deg, #C9A14B 0%, #D4AF5E 50%, #C9A14B 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            lineHeight: 1.3,
+            textAlign: 'center',
+            direction: 'rtl',
+            letterSpacing: '-0.02em',
+            marginBottom: getElementSpacing('medium')
+          }}
+        >
+          לבחירה הראשונה של המפיקים הכי גדולים בארץ
+        </motion.div>
+
+        {/* משפט אנחנו רוקחים - עם SplitText על מילים - יופיע מהר יותר בגלילה */}
+        <div style={{
+          fontSize: getResponsiveValue({
+            mobile: '2.8rem',
+            tablet: '3.5rem',
+            laptop: '4.5rem',
+            desktop: '5.5rem',
+            large: '6rem'
+          }),
+          fontWeight: '700',
+          fontFamily: FONTS.secondary,
+          lineHeight: 1.2,
+          textAlign: 'center',
+          direction: 'rtl',
+          letterSpacing: '-0.03em',
+          maxWidth: getResponsiveValue({
+            mobile: '95%',
+            tablet: '850px',
+            laptop: '1100px',
+            desktop: '1300px',
+            large: '1500px'
+          }),
+          margin: '0 auto',
+          marginTop: getElementSpacing('medium'),
+          wordWrap: 'break-word',
+          overflowWrap: 'break-word',
+          whiteSpace: 'normal'
+        }}>
+          <SplitText
+            text="אנחנו רוקחים את הידע והדמיון לכוס אחת מושלמת"
+            className="vision-text-split"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="words"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
         </div>
       </div>
     </section>

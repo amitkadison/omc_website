@@ -40,6 +40,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:host": "set HOST=0.0.0.0 && react-scripts start",
+    "start:mobile": "set HOST=0.0.0.0 && set PORT=3000 && react-scripts start",
     "build": "set CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

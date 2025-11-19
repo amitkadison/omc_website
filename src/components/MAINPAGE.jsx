@@ -18,6 +18,7 @@ import { StickyScroll } from "./ui/StickyScroll";
 import PinterestGalleryNew from './PinterestGalleryNew';
 import SplitText from './SplitText';
 import ContactForm from './ContactForm';
+import SEO from './SEO';
 
 // Register ScrollTrigger once
 gsap.registerPlugin(ScrollTrigger);
@@ -2311,6 +2312,7 @@ const MAINPAGE = () => {
 
   return (
     <>
+      <SEO />
       <GlobalStyles />
       <style>{`
         .mainpage-container {

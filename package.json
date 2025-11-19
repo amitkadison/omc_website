@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@microsoft/clarity": "^1.0.0",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
     "@tabler/icons-react": "^3.34.1",

@@ -202,7 +202,7 @@ const AboutPage = () => {
           }
 
           .our-story-section.images-fallen {
-            margin-top: -480px;
+            margin-top: -580px;
           }
         }
 

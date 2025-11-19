@@ -11,6 +11,7 @@ import WhatsAppButton from './WhatsAppButton';
 import OMCSmartNavigationWithMobile from './OMCSmartNavigation';
 import MobileHamburgerMenu from './MobileHamburgerMenu';
 import DangerousMode from './DangerousMode';
+import ClarityAnalytics from './ClarityAnalytics';
 
 const AppRouter = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -104,6 +105,9 @@ const AppRouter = () => {
 
   return (
     <>
+      {/* Microsoft Clarity Analytics */}
+      <ClarityAnalytics />
+
       {/* Mobile-only: ServicesPage styling effects */}
       {currentPage === 'home' && isMobile && (
         <style>{`

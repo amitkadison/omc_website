@@ -1,4 +1,5 @@
 export const galleryItems = [
+  // תמונה #1
   {
     id: "1",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/_DSC7926_l9h2sv.jpg",
@@ -7,6 +8,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע קוקטיילים מקצועי",
     clientQuote: "הקוקטיילים היו פשוט מעולים והשירות היה מקצועי ביותר"
   },
+  // תמונה #2
   {
     id: "2",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/_DSC8019_fv21tc.jpg",
@@ -15,6 +17,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע של AMAZON",
     clientQuote: "האירוע היה מדהים והצוות מקצועי"
   },
+  // תמונה #3
   {
     id: "3",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/_DSC8091_qmgv1z.jpg",
@@ -23,6 +26,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע חברתי פרטי",
     clientQuote: "המיקסולוג היה אמן אמיתי, כל קוקטייל היה יצירת אמנות"
   },
+  // תמונה #4
   {
     id: "4",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/_DSC8625_mmxgam.jpg",
@@ -31,6 +35,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע משרדי",
     clientQuote: "הצוות הגיע מוכן ומאורגן, הכל היה מושלם"
   },
+  // תמונה #5
   {
     id: "5",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/_DSC8712_lzngrk.jpg",
@@ -39,6 +44,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע השקה",
     clientQuote: "החוויה עלתה על כל הציפיות שלנו"
   },
+  // תמונה #6
   {
     id: "6",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/1_uy4xdv.jpg",
@@ -47,6 +53,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע של Google",
     clientQuote: "השירות היה מעל ומעבר לכל דמיון"
   },
+  // תמונה #7
   {
     id: "7",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/2_xxogqf.jpg",
@@ -55,6 +62,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע חתונה",
     clientQuote: "הבר הפך את החתונה שלנו לבלתי נשכחת"
   },
+  // תמונה #8
   {
     id: "8",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/3_eb2dfc.jpg",
@@ -63,6 +71,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע יום הולדת",
     clientQuote: "כל האורחים היו מרוצים מהקוקטיילים המיוחדים"
   },
+  // תמונה #9
   {
     id: "9",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/4_j2jjfl.jpg",
@@ -71,6 +80,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע חברתי",
     clientQuote: "האווירה שיצרתם הייתה בדיוק מה שחלמנו עליו"
   },
+  // תמונה #10
   {
     id: "10",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/5_sblbaf.jpg",
@@ -79,6 +89,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע של Microsoft",
     clientQuote: "הפרופסיונליזם והיצירתיות הם ללא תחרות"
   },
+  // תמונה #11
   {
     id: "11",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/6_vacdea.jpg",
@@ -87,6 +98,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע גאלה",
     clientQuote: "כל פרט היה מושלם, מההכנה ועד הביצוע"
   },
+  // תמונה #12
   {
     id: "12",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/7_msnpro.jpg",
@@ -95,14 +107,16 @@ export const galleryItems = [
     eventName: "תמונה מאירוע השקת מוצר",
     clientQuote: "הבר הוסיף מגע יוקרתי שהרים את האירוע לרמה אחרת"
   },
+  // תמונה #13
   {
     id: "13",
-    img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/8_h2msr1.jpg",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561463/5_1_yzwbnm.jpg",
     url: "#",
     height: 250,
-    eventName: "תמונה מאירוע צילומים",
+    eventName: "תמונה מאירוע מיוחד",
     clientQuote: "השירות היה מהיר ויעיל, בדיוק מה שהיינו צריכים"
   },
+  // תמונה #14
   {
     id: "14",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/9_izc4gs.jpg",
@@ -111,6 +125,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע VIP",
     clientQuote: "חוויה בלתי נשכחת עם שירות ברמה עולמית"
   },
+  // תמונה #15
   {
     id: "15",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/77E35F48-45AD-4C58-A121-461FF7A19563_s7ya7f.jpg",
@@ -119,6 +134,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע מיוחד",
     clientQuote: "הצוות הפך את האירוע שלנו לזיכרון יפה לכל החיים"
   },
+  // תמונה #16
   {
     id: "16",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/DSC03301_kvam86.jpg",
@@ -127,6 +143,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע פרטי",
     clientQuote: "כל קוקטייל היה הפתעה טעימה חדשה"
   },
+  // תמונה #17
   {
     id: "17",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/DSC03508_imooxi.jpg",
@@ -135,38 +152,43 @@ export const galleryItems = [
     eventName: "תמונה מאירוע עסקי",
     clientQuote: "המקצועיות והחדשנות היו במיטב שראינו"
   },
+  // תמונה #18
   {
     id: "18",
-    img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/F484BEFF-2F28-41D0-9965-FEE9EB74ED6F_vpw5bd.jpg",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561478/IMG_1242_fa97vn.jpg",
     url: "#",
     height: 380,
-    eventName: "תמונה מאירוע של Apple",
+    eventName: "תמונה מאירוע מרהיב",
     clientQuote: "השירות עלה על כל הציפיות והיה ללא רבב"
   },
+  // תמונה #19
   {
     id: "19",
-    img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/Gleb_Smirnov-Productions-2606_kdjwjs.jpg",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561477/Gleb_Smirnov-Productions-5226_mdsuxe.jpg",
     url: "#",
     height: 280,
-    eventName: "תמונה מאירוע רשת חברתית",
+    eventName: "תמונה מאירוע יוקרתי",
     clientQuote: "האירוע היה הצלחה מוחלטת בזכות הבר המקצועי"
   },
+  // תמונה #20
   {
     id: "20",
-    img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/Gleb_Smirnov-Productions-2720_bu92g7.jpg",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561461/_DSC8819_htw9tm.jpg",
     url: "#",
     height: 200,
-    eventName: "תמונה מאירוע REKA",
+    eventName: "תמונה מאירוע מושלם",
     clientQuote: "הקוקטיילים היו יצירות אמנות אמיתיות"
   },
+  // תמונה #21
   {
     id: "21",
-    img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/Gleb_Smirnov-Productions-6412_ee0qge.jpg",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561447/_DSC4408_fxde7s.jpg",
     url: "#",
     height: 260,
-    eventName: "תמונה מאירוע עיצוב",
+    eventName: "תמונה מאירוע מדהים",
     clientQuote: "השילוב בין טעם מושלם לעיצוב מרהיב"
   },
+  // תמונה #22
   {
     id: "22",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/POP_UP_RISHPON_BY_EYAL_GAZIEL_012_jsptzg.jpg",
@@ -175,6 +197,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע צילומי אופנה",
     clientQuote: "הצוות הוסיף אלגנטיות ויוקרה לכל הסט"
   },
+  // תמונה #23
   {
     id: "23",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/PS1_0054_resized_w2sjm6.jpg",
@@ -183,6 +206,7 @@ export const galleryItems = [
     eventName: "תמונה מאירוע יוקרה",
     clientQuote: "כל רגע היה מושלם עם השירות המקצועי שלכם"
   },
+  // תמונה #24
   {
     id: "24",
     img: "https://res.cloudinary.com/doteohz34/image/upload/q_auto,f_auto,w_600/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2025-08-01_%D7%91%D7%A9%D7%A2%D7%94_15.15.18_e1cab6e8_nesoy5.jpg",
@@ -190,10 +214,82 @@ export const galleryItems = [
     height: 340,
     eventName: "תמונה מאירוע רקע",
     clientQuote: "האווירה שיצרתם הייתה בדיוק מה שדמיינו"
+  },
+  // תמונה #25
+  {
+    id: "25",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561478/IMG_7840_gqfe33.jpg",
+    url: "#",
+    height: 320,
+    eventName: "תמונה מאירוע חדש",
+    clientQuote: "רגע מושלם שנתפס במצלמה"
+  },
+  // תמונה #26
+  {
+    id: "26",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561452/_DSC8153_ltlzux.jpg",
+    url: "#",
+    height: 280,
+    eventName: "תמונה מאירוע נהדר",
+    clientQuote: "חוויה בלתי נשכחת"
+  },
+  // תמונה #27
+  {
+    id: "27",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561448/_DSC4323_kopuin.jpg",
+    url: "#",
+    height: 300,
+    eventName: "תמונה מאירוע מיוחד",
+    clientQuote: "פרטים קטנים שעושים את ההבדל"
+  },
+  // תמונה #28
+  {
+    id: "28",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561448/_DSC5915_ckqj3e.jpg",
+    url: "#",
+    height: 260,
+    eventName: "תמונה מאירוע בלתי נשכח",
+    clientQuote: "אווירה מדהימה"
+  },
+  // תמונה #29
+  {
+    id: "29",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561446/_DSC4627_ivnvt9.jpg",
+    url: "#",
+    height: 290,
+    eventName: "תמונה מאירוע מושלם",
+    clientQuote: "כל הפרטים במקום"
+  },
+  // תמונה #30
+  {
+    id: "30",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561448/_DSC5381_h3dqiz.jpg",
+    url: "#",
+    height: 310,
+    eventName: "תמונה מאירוע מרגש",
+    clientQuote: "רגעים שנשארים לנצח"
+  },
+  // תמונה #31
+  {
+    id: "31",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561461/_DSC8813_fp3wyr.jpg",
+    url: "#",
+    height: 270,
+    eventName: "תמונה מאירוע יפהפה",
+    clientQuote: "רגעים קסומים"
+  },
+  // תמונה #32
+  {
+    id: "32",
+    img: "https://res.cloudinary.com/doteohz34/image/upload/v1763561477/Gleb_Smirnov-Productions-6407_ph5r2p.jpg",
+    url: "#",
+    height: 330,
+    eventName: "תמונה מאירוע מושלם",
+    clientQuote: "פרטים שעושים את ההבדל"
   }
 ];
 
-// Mobile-specific gallery items (8 images for perfect 2-column layout: 4 per column)
+// Mobile-specific gallery items (10 images for perfect 2-column layout: 5 per column)
 export const mobileGalleryItems = [
   // Best visual images with uniform sizes for mobile
   {
@@ -226,6 +322,14 @@ export const mobileGalleryItems = [
   },
   {
     ...galleryItems[11], // Product launch event
+    height: 280
+  },
+  {
+    ...galleryItems[24], // New image 1
+    height: 280
+  },
+  {
+    ...galleryItems[25], // New image 2
     height: 280
   }
 ];

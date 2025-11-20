@@ -188,6 +188,26 @@ const PinterestGalleryNew = React.memo(() => {
                     e.target.style.display = 'none';
                   }}
                 />
+                {/* Image Number Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '8px',
+                  right: '8px',
+                  backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                  color: '#FFD700',
+                  padding: '6px 12px',
+                  borderRadius: '8px',
+                  fontSize: '16px',
+                  fontWeight: '700',
+                  fontFamily: 'Varela Round, sans-serif',
+                  border: '2px solid rgba(255, 215, 0, 0.5)',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
+                  zIndex: 10,
+                  pointerEvents: 'none',
+                  display: 'none'
+                }}>
+                  #{item.id}
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -257,6 +277,26 @@ const PinterestGalleryNew = React.memo(() => {
                     e.target.style.display = 'none';
                   }}
                 />
+                {/* Image Number Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                  color: '#FFD700',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  fontSize: '18px',
+                  fontWeight: '700',
+                  fontFamily: 'Varela Round, sans-serif',
+                  border: '2px solid rgba(255, 215, 0, 0.5)',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
+                  zIndex: 10,
+                  pointerEvents: 'none',
+                  display: 'none'
+                }}>
+                  #{item.id}
+                </div>
               </motion.div>
             ))}
           </motion.div>

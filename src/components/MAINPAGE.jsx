@@ -2,6 +2,7 @@
 // Grid-optimized and refactored main page
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Slider from 'react-slick';
@@ -1040,7 +1041,7 @@ const HebrewTextSection = React.memo(() => {
           font-weight: inherit !important;
           line-height: inherit !important;
           letter-spacing: inherit !important;
-          margin: 0 0.2em;
+          margin: 0 0.1em;
         }
 
         .hebrew-text-split {
@@ -1227,8 +1228,8 @@ const HebrewTextSection = React.memo(() => {
           <SplitText
             text="אנחנו רוקחים את הידע והדמיון לכוס אחת מושלמת"
             className="vision-text-split"
-            delay={100}
-            duration={0.6}
+            delay={150}
+            duration={0.9}
             ease="power3.out"
             splitType="words"
             from={{ opacity: 0, y: 40 }}
@@ -1874,11 +1875,11 @@ const AboutUsSection = React.memo(() => {
   const content = useMemo(() => [
     {
       title: "הכנות",
-      description: "החל מהתאמת הטעמים לאופי האירוע, לעונה ולקהל היעד, ועד בחירת אנשי הצוות האיכותיים ביותר שיעמדו מאחורי הבר – כל פרט קטן נבנה בקפידה, במיוחד בשבילכם."
+      description: "כל פרט קטן באירוע שלכם נבנה בקפידה, במיוחד בשבילכם: החל מהתאמת הטעמים לאופי האירוע, לעונה ולקהל היעד ועד לבחירת אנשי הצוות המקצועיים ביותר שיעמדו מאחורי הבר."
     },
     {
       title: "יום האירוע",
-      description: "אנחנו נגיע ראשונים, נדאג לארגן את הכל עד הפרט האחרון ואתם? אתם תוכלו להיות בראש שקט, עם משקה ביד וחיוך רחב. אה והכי חשוב לגבי האורחים שלכם... אנחנו כבר נדאג שהם ימשיכו לדבר על האירוע שלכם עוד הרבה אחרי שיגמר"
+      description: "אנחנו נגיע ראשונים ונדאג לארגן את הכל עד הפרט האחרון בזמן שאתם תוכלו להיות בראש שקט, עם משקה ביד וחיוך רחב.\nוהאורחים שלכם? אנחנו נדאג שימשיכו לדבר על האירוע שלכם עוד הרבה אחרי שיסתיים"
     }
   ], []);
 
@@ -2156,7 +2157,7 @@ const GallerySection = React.memo(() => {
             zIndex: 2,
             margin: '0 auto'
           }}>
-            גלריית אירועים
+            הרגעים שמספרים הכול
           </h2>
         </div>
       </motion.div>
@@ -2433,6 +2434,51 @@ const MAINPAGE = () => {
         <CTASection ref={ctaRef} />
         <GallerySection />
         <FAQSection />
+
+        {/* Footer */}
+        <footer style={{
+          width: '100%',
+          padding: '40px 20px',
+          marginTop: '60px',
+          background: 'rgba(255, 255, 255, 0.02)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          textAlign: 'center',
+          direction: 'rtl',
+          fontFamily: 'Varela Round, sans-serif'
+        }}>
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+            alignItems: 'center'
+          }}>
+            <Link
+              to="/accessibility"
+              style={{
+                color: '#C9A14B',
+                textDecoration: 'none',
+                fontSize: '16px',
+                fontWeight: '500',
+                transition: 'color 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#D4AF5E'}
+              onMouseLeave={(e) => e.target.style.color = '#C9A14B'}
+            >
+              הצהרת נגישות
+            </Link>
+
+            <p style={{
+              color: 'rgba(255, 255, 255, 0.6)',
+              fontSize: '14px',
+              margin: 0
+            }}>
+              © {new Date().getFullYear()} OMC Mixology Art. כל הזכויות שמורות.
+            </p>
+          </div>
+        </footer>
       </div>
     </>
   );

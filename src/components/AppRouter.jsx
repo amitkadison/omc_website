@@ -7,6 +7,7 @@ import GalleryPage from './GalleryPage';
 import BLOG from './BLOG';
 import ArticlePage from './ArticlePage';
 import ContactPage from './ContactPage';
+import AccessibilityPage from './AccessibilityPage';
 import WhatsAppButton from './WhatsAppButton';
 import OMCSmartNavigationWithMobile from './OMCSmartNavigation';
 import MobileHamburgerMenu from './MobileHamburgerMenu';
@@ -31,6 +32,7 @@ const AppRouter = () => {
     if (path.startsWith('/blog')) return 'blog';
     if (path.startsWith('/article')) return 'article';
     if (path.startsWith('/contact')) return 'contact';
+    if (path.startsWith('/accessibility')) return 'accessibility';
     return 'home';
   };
 
@@ -55,7 +57,8 @@ const AppRouter = () => {
       'gallery': '/gallery',
       'blog': '/blog',
       'article': '/article',
-      'contact': '/contact'
+      'contact': '/contact',
+      'accessibility': '/accessibility'
     };
 
     navigate(routes[pageId] || '/');
@@ -194,6 +197,7 @@ const AppRouter = () => {
           <Route path="/blog" element={<BLOG onNavigateToArticle={(articleData) => navigateToPage('article', articleData)} />} />
           <Route path="/article" element={<ArticlePage articleData={selectedArticle} onBackToBlog={() => navigateToPage('blog')} />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/accessibility" element={<AccessibilityPage />} />
           {/* Catch-all route for 404 - redirect to home */}
           <Route path="*" element={<MAINPAGE />} />
         </Routes>

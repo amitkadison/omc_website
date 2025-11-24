@@ -4,7 +4,7 @@ import { IconX } from '@tabler/icons-react';
 import { useResponsive } from '../hooks/useResponsive';
 import { galleryItems, mobileGalleryItems } from '../data/galleryData';
 
-const PinterestGalleryNew = React.memo(() => {
+const PinterestGalleryNew = React.memo(({ items = null, mobileItems = null }) => {
   const { getResponsiveValue } = useResponsive();
   const [selectedImage, setSelectedImage] = useState(null);
   const [clickPosition, setClickPosition] = useState(null);
@@ -118,7 +118,10 @@ const PinterestGalleryNew = React.memo(() => {
   };
 
   // Determine which gallery items to use based on screen size
-  const currentGalleryItems = isMobile ? mobileGalleryItems : galleryItems;
+  // Use custom items if provided, otherwise use default galleryItems
+  const currentGalleryItems = isMobile
+    ? (mobileItems || mobileGalleryItems)
+    : (items || galleryItems);
 
   return (
     <>

@@ -98,7 +98,7 @@ const GalleryPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.05 }}
           style={{
             textAlign: 'center',
             marginBottom: '3rem',
@@ -144,7 +144,7 @@ const GalleryPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.35, delay: 0.15 }}
           style={{
             width: '100%',
             maxWidth: '100%',

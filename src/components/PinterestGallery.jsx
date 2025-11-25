@@ -45,28 +45,35 @@ const PinterestGallery = React.memo(() => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
+        staggerChildren: 0.03,
+        delayChildren: 0.05
       }
     }
   };
 
-  const itemVariants = {
+  // Function to calculate row-based delay for smoother horizontal loading
+  const getItemDelay = (index, cols) => {
+    const row = Math.floor(index / cols);
+    return row * 0.08; // Each row appears 0.08s after the previous
+  };
+
+  const getItemVariants = (index) => ({
     hidden: {
       opacity: 0,
-      y: 60,
-      scale: 0.8
+      y: 30,
+      scale: 0.95
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
+        delay: getItemDelay(index, columns),
         ease: "easeOut"
       }
     }
-  };
+  });
 
   return (
     <div style={{
@@ -94,14 +101,14 @@ const PinterestGallery = React.memo(() => {
             <motion.div
               key={item.id}
               className="gallery-item"
-              variants={itemVariants}
+              variants={getItemVariants(index)}
               whileHover={{
                 scale: 1.05,
                 transition: { duration: 0.3 }
               }}
               data-aos="fade-up"
-              data-aos-delay={index * 50}
-              data-aos-duration="600"
+              data-aos-delay={Math.floor(index / 2) * 30}
+              data-aos-duration="400"
               style={{
                 cursor: 'pointer',
                 borderRadius: '16px',
@@ -160,14 +167,14 @@ const PinterestGallery = React.memo(() => {
               <motion.div
                 key={item.id}
                 className="gallery-item"
-                variants={itemVariants}
+                variants={getItemVariants(index)}
                 whileHover={{
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
                 data-aos="fade-up"
-                data-aos-delay={index * 50}
-                data-aos-duration="600"
+                data-aos-delay={Math.floor(index / columns) * 40}
+                data-aos-duration="400"
                 style={{
                   breakInside: 'avoid',
                   marginBottom: `${gap}px`,

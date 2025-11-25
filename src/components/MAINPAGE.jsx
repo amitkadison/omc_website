@@ -1201,11 +1201,11 @@ const HebrewTextSection = React.memo(() => {
         {/* משפט אנחנו רוקחים - עם SplitText על מילים - יופיע מהר יותר בגלילה */}
         <div style={{
           fontSize: getResponsiveValue({
-            mobile: '2.8rem',
-            tablet: '3.5rem',
-            laptop: '4.5rem',
-            desktop: '5.5rem',
-            large: '6rem'
+            mobile: '2.2rem',
+            tablet: '2.8rem',
+            laptop: '3.5rem',
+            desktop: '4rem',
+            large: '4.5rem'
           }),
           fontWeight: '700',
           fontFamily: FONTS.secondary,

@@ -102,7 +102,7 @@ const AboutPage = () => {
         }
 
         .vision-text {
-          font-size: 30px;
+          font-size: 72px;
           font-weight: 700;
           font-family: 'Varela Round', sans-serif;
           background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
